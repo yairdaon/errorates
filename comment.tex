@@ -15,6 +15,7 @@
 \pgfplotsset{compat=1.14}
 \usepackage{float}
 \usepackage[margin=0.5in]{geometry}
+\hypersetup{linkcolor=black,citecolor=black,urlcolor=black}  
 
 
 \newcommand{\fp}{P_{\text{fp}}}
@@ -41,25 +42,26 @@
 \affil[2]{School of Public Health, The Faculty of Medicine, Tel Aviv University\\ Tel Aviv, Israel}
 \affil[3]{The Gertner Institute for Epidemiology and Health Policy Research, Tel Hashomer, Israel}
 %\email{yair.daon@gmail.com}
-\date{\today}
+\date{}
 
 \maketitle
 %%% MAKE TITLE PAGE %%%
-% \bigskip
-% \bigskip
-% \bigskip
-% \bigskip
-% \begin{itemize}
-%     \item Article type: Brief report.
-%     \item Corresponding author: Uri Obolski, email uriobols@tauex.tau.ac.il, Phone +972526309508
-%     \item Running head: Inflated false-negative rates in pooled SARS-CoV-2 tests.
-%     \item Conflict of interests: None.
-%     \item Financial support: Yair Daon was supported by a
-%     post-doctoral fellowship from the Tel Aviv University Center for
-%     Combating Pandemics and the Raymond and Beverly Sackler Dean's
-%     Post-Doctoral fellowship.
-%     \item Data is presented in the manuscript itself and can be found in a paper we reference to. Calculations are simple and can be easily implemented in any programming language.
-% \end{itemize}
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\begin{itemize}
+    \item Article type: Brief report.
+    \item Corresponding author: Uri Obolski, email uriobols@tauex.tau.ac.il, Phone +972526309508
+    \item Running head: Inflated false-negative rates in pooled SARS-CoV-2 tests.
+    \item Conflict of interests: None.
+    \item Financial support: Yair Daon was supported by a
+    post-doctoral fellowship from the Tel Aviv University Center for
+    Combating Pandemics and the Raymond and Beverly Sackler Dean's
+    Post-Doctoral fellowship.
+    \item Data is presented in the manuscript itself and can be found in a paper we reference to. Calculations are simple and can be easily implemented in any programming language.
+\end{itemize}
+\newpage
 % \end{document}
 
 \begin{abstract}
@@ -135,7 +137,7 @@ The single test false-negative rate $1-\Se$ and scheme false-negative rate $\mi$
 \end{equation}
 $\rel$ is the percentage increase in the pooling scheme false-negative rate, relative to the single test false-negative rate.
 
-For the approximation commonly used in the literature estimates the scheme false-negative rate as $1-\Se^2$ (section \ref{section:ass} and \cite{Simplistic1, Simplistic2, Kim, OptimalDorfmanPool}). A short calculation shows that this approximation implies the percentage increase in scheme false-negative rate is just $100\cdot \Se$.
+For the approximation commonly used in the literature estimates the scheme false-negative rate as $1-\Se^2$ (Section \ref{section:assumptions} and \cite{Simplistic1, Simplistic2, Kim, OptimalDorfmanPool}). A short calculation shows that this approximation implies the percentage increase in scheme false-negative rate is just $100\cdot \Se$.
 
 \section{Results}\label{section:results}
 
@@ -152,7 +154,7 @@ Although Dorfman pooling improves testing throughput, we have shown that it can 
 
 Our results lead to a fact almost disregarded in \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient when prevalence is low, such circumstances are exactly those leading to a substantial increase in false-negative rates. 
 
-An approximation to our results has been previously considered: $\mi \approx 1-\Se^2 $\cite{Simplistic1, Simplistic2, Kim, OptimalDorfmanPool}. Such an approximation arises when one assumes that the probability of a false-negative is identical for the pooled and single tests. Although simplistic in nature, this approximation does capture the intuition behind our results: For Donald to be considered negative under Dorfman pooling, he has to test negative twice. In addition to this approximation only being an upper bound \cite{Simplistic2}, it does not account for the effect of infection prevalence on the false-negative rates under Dorfman pooling. Supporting the importance of this effect, such an association between prevalence and the scheme false-negative rate under Dorfman pooling has been empirically noted  \cite{DorfmanYuvalDor}.
+An approximation to our results has been previously considered: $\mi \approx 1-\Se^2 $, see \cite{Simplistic1, Simplistic2, Kim, OptimalDorfmanPool}. Such an approximation arises when one assumes that the probability of a false-negative is identical for the pooled and single tests. Although simplistic in nature, this approximation does capture the intuition behind our results: For Donald to be considered negative under Dorfman pooling, he has to test negative twice. In addition to this approximation only being an upper bound \cite{Simplistic2}, it does not account for the effect of infection prevalence on the false-negative rates under Dorfman pooling. Supporting the importance of this effect, such an association between prevalence and the scheme false-negative rate under Dorfman pooling has been empirically noted  \cite{DorfmanYuvalDor}.
 
 Although we have shown the inherent risk of Dorfman pooling, this shortcoming applies to other pooling schemes. Pooling schemes (e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of positive pooled results to correctly identify Donald as infected. Consider the hierarchical pooling scheme \cite{Lion, Kim}: If the first pool yields a positive result, it is split in two. Then the splitting is repeated until resulting pools are negative or individuals are tested separately. With an initial pool size of 32, Donald will necessarily have to test positive in pools of size 32, 16, 8, 4 and 2, as well as in a single test, for the scheme to correctly identify him as infected. Compare this to the Dorfman scheme that requires a positive test in a pool of size $N=8$, and an additional single positive test to identify Donald as infected. The hierarchical pooling scheme of \cite{Lion, Kim} will necessarily yield  more false-negatives than Dorfman pooling --- there are additional places for it to fail.
 
