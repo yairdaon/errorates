@@ -269,16 +269,16 @@ out in \cite{KitComparison}.
 To summarize, we assume that for a single pool, a positive test result
 is generated in one of two paths. Either, SARS-CoV-2 RNA from an
 infected individual's sample is correctly amplified and detected, and
-this can happen for each positive sample in a pool. Or, some erroneous
-amplification occurs (e.g. contaminant viral RNA is introduced), an
-event that occurs at most once per pool. Our model is illustrated in
-Figure~\ref{fig:likelihood}, and explicitly defined below. 
-
-A negative pooled test result occurs when all detection paths (both
-correct and erroneous) fail. The probability of no false-detection
-accounts for the $\spec$ term. The probability of no correct detection
-is $(1-\sens)$ per infected individual. The probability that all such
-paths fail is the product of the above mentioned terms, displayed in
+this can happen for each positive sample in a pool, with probability
+$\Se$. Or, some erroneous amplification occurs (e.g. contaminant viral
+RNA is introduced), an event that occurs at most once per pool, with
+probability $1-\Sp$. Our model is illustrated in
+Figure~\ref{fig:likelihood}, and summarized in
+%% A negative pooled test result occurs when all detection paths (both
+%% correct and erroneous) fail. The probability of no false-detection
+%% accounts for the $\spec$ term. The probability of no correct detection
+%% is $(1-\sens)$ per infected individual. The probability that all such
+%% paths fail is the product of the above mentioned terms, displayed in
 \eqref{eq:likelihood a}.%%  The probability of a positive result,
 %% presented in \eqref{eq:likelihood b}, is simply the complement.
 %% The probability of a negative pooled test result is presented in
@@ -288,7 +288,7 @@ paths fail is the product of the above mentioned terms, displayed in
 \begin{align}%\label{eq:single likelihood}
   %\begin{split}
     \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N
-    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum\theta_i}, \label{eq:likelihood a}
+    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum\theta_i}. \label{eq:likelihood a}
     %
     %
     %
