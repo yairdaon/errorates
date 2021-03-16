@@ -70,28 +70,30 @@ should be kept in mind by practitioners and policy makers.
 Reverse transcription polymerase chain reaction (RT-PCR) testing is a
 key component in breaking transmission chains and mitigating the
 COVID-19 pandemic. As such, the need for large-scale testing has
-resulted in the development techniques that of pooling schemes of RT-PCR tests
-\cite{DorfmanYuvalDor, PoolSize30, BayesianDorfman, MatrixPooling,
-  LionDorfman}. One such popular scheme is Dorfman pooling
-\cite{DorfmanOriginal, DorfmanYuvalDor}: Select $N$ individuals and
-perform a single RT-PCR test on their combined (\emph{pooled})
-samples. If the pooled test yields a positive result --- test each
-individual separately. The throughput efficiency of Dorfman pooling
-has been demonstrated empirically \cite{DorfmanYuvalDor}.
+resulted in the development of techniques to increase the the
+throughput of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30,
+  BayesianDorfman, MatrixPooling, LionDorfman}. These techniques are
+called \emph{pooling} and originated in the seminal work of Dorfman
+pooling \cite{DorfmanOriginal, DorfmanYuvalDor}: Select $N$
+individuals and perform a single RT-PCR test on their combined
+(\emph{pooled}) samples. If the pooled test yields a positive result
+--- test each individual separately. The throughput efficiency of
+Dorfman pooling for has been demonstrated empirically
+\cite{DorfmanYuvalDor} and its error rates thoroguhly investigated
+\cite{Kim, Simplistic1, OptimalDorfmanPool}.
 
-Pooling (or RT-PCR tests, for that matter) is not perfect, and there
-is always some nonzero probability of error. Tyipically, authors
-assume the probability of a true-positive (the test's
-\emph{sensitivity}) does not depend on the number of infected samples
-in the pool, but rather on the existence of at least one such
-sample. Thus, the probability of a positive result in a pooled test is
-(assumed) identical for a pool with one sample from an infected
-individual and (e.g.) five such samples. This assumption is common in
-the group testing literature \cite{Kim, OptimalDorfmanPool}, as well
-as in more specific, COVID-19 focused studies \cite{Simplistic1,
-  Simplistic2}. In this study we refute these commonly made
-assumptions and show how they affect estimation of false-negative
-rates for Dorfman pooling.
+Pooling RT-PCR tests is not perfect, and there is always some nonzero
+probability of error. Typically, authors assume the probability of a
+true-positive (the test's \emph{sensitivity}) does not depend on the
+number of infected samples in the pool, but rather on the existence of
+at least one such sample. Thus, the probability of a positive result
+in a pooled test is (assumed) identical for a pool with one sample
+from an infected individual and (e.g.) five such samples. This
+assumption is common in the group testing literature \cite{Kim,
+  OptimalDorfmanPool}, as well as in more specific, COVID-19 focused
+studies \cite{Simplistic1, Simplistic2}. In this study we refute these
+commonly made assumptions and show how they affect estimation of
+false-negative rates for Dorfman pooling.
 
 %% Before we proceed, it is important to distinguish three types of
 %% false-negative events when performing pooling. For convenience, we
@@ -157,6 +159,14 @@ detection and, consequently, a false-negative. However, \cite{Lion}
 showed that this effect can be safely ignored when mixing up to 32
 samples, which we correspondingly assume.
 
+Formally, we consider a pool containing $N$ individuals
+$\{1,\dots,N\}$. We denote the true infection states $\theta \in
+\{0,1\}^N$, so individual $i$ is infected iff $\theta_i=1$. The RT-PCR
+test's sensitivity (true-negative rate) is denoted $\sens$, and the
+test's specificity (true-negative rate) is denoted $\spec$. Test results
+(data) are denoted $\data$, where $\data=1$ iff the test returned a
+positive result.
+
 \subsection{Common assumptions}
 Previous studies of group testing strategies assumed that the
 false-negative probability does not depend on the number of infected
@@ -166,23 +176,22 @@ context of SARS-CoV-2 also employ similar assumptions
 \cite{Simplistic1, Simplistic2}. Specifically, these studies assume
 that the probability of a negative result is the same for a pool with
 a single sample coming from an infected individual and (e.g.)
-five. We refute these assumptions and suggest more plausible ones in
-Section~\ref{subsec:ours} below.
+five. Explicitly:
+
+\begin{align}\label{eq:common}
+\Pr(\data=1|\theta) = \left \{
+\begin{array}{lr}
+        \sens & \exists i\ \text{such that } \theta_i = 1\\
+        1-\spec & \text{otherwise}
+\end{array} 
+\end{align}
+We refute the assumptions underlying \eqref{eq:common} in
+Section~\ref{subsec:ours} and suggest more plausible ones in
+Section~\ref{subsec:ours}.
 
 
-
-\subsection{Our model}\label{subsec:ours}
-We assume two pathways for a positive pooled test result: Viral RNA
-from an infected individual is correctly detected; or, some erroneous
-detection occurs (e.g. contaminant viral RNA is introduced). We assume
-a homogeneous and disconnected population (each individual is infected
-independently and with equal probability).
-
-Our assumptions, although natural, stand in contrast to assumptions
-commonly made in the literature \cite{Kim, Simplistic1, Simplistic2,
-  OptimalDorfmanPool}. It is commonly assumed that the probability of
-a positive pooled test is not increased by having more than one
-infected individual in the pool. We refute the common assumptions with
+\subsection{Refuting common assumptions}\label{subsec:refute}
+We refute the common assumptions of Section~\ref{subsec:common} with
 experimental data summarized in Table \ref{table}, collected from
 \cite{Salazar}. There, the authors investigate Dorfman pooling and,
 regardless of the pooled test result, follow up and test each pool
@@ -193,7 +202,7 @@ the 29 negative pools, subsequent separate testing yielded a single
 positive result in 24. In contrast, of the 99 positive pools, 42
 yielded a single positive test upon subsequent separate testing.
 
-The data in table \ref{table} allows us to test the following null
+The data in Table \ref{table} allows us to test the following null
 hypothesis $H_0$: The probability of a pooled false-negative is equal
 for pools with one subsequent positively tested member and pools with
 two or more such members. We apply Fisher's exact test for the
@@ -214,8 +223,6 @@ individuals infected within the pool, as assumed in \cite{Simplistic1,
 \end{tabular}
 \caption{Contingency table of data from \cite{Salazar}}\label{table}
 \end{table}
-
-
 
 Erroneous detection of SARS-CoV-2 RNA (a false-positive) in pooled
 RT-PCR testing can also occur. A common assumption \cite{Simplistic1,
@@ -277,12 +284,8 @@ amplification occurs (e.g. contaminant viral RNA is introduced), an
 event that occurs at most once per pool. Our model is illustrated in
 Figure~\ref{fig:likelihood}, and explicitly defined below. 
 
-Consider a pool containing $N$ individuals $\{1,\dots,N\}$. We denote
-the true infection states $\theta \in \{0,1\}^N$, so individual $i$ is
-infected iff $\theta_i=1$. Data are denoted $\data$. The tests
-false-negative rate is denoted $\fn$ and the false-positve rate is
-denoted $\fp$. The probability of a negative pooled test result is
-presented in \eqref{eq:likelihood a} (along with its complement
+The probability of a negative pooled test result is presented in
+\eqref{eq:likelihood a} (along with its complement
 \eqref{eq:likelihood b}), and explained below.
 \begin{subequations}
 \begin{align}%\label{eq:single likelihood}
