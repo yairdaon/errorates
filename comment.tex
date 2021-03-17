@@ -294,7 +294,7 @@ Figure~\ref{fig:likelihood}, and summarized in
 \begin{align}%\label{eq:single likelihood}
   %\begin{split}
     \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N
-    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum\theta_i}. \label{eq:likelihood a}
+    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum_i\theta_i}. \label{eq:likelihood a}
     %
     %
     %
@@ -318,7 +318,7 @@ Figure~\ref{fig:likelihood}, and summarized in
 As an application of our model, we calculate the differnece in
 false-negative rate for a single \emph{infected} individual,
 henceforth referred to as "Donald".  We distinguish three types of
-false-negative events when performing pooling. A \emph{single test's}
+false-negative events when performing pooling. A \emph{single test}'s
 false-negative is the event of a negative result upon testing Donald
 separately, i.e., in an RT-PCR test without pooling. A \emph{pooled}
 false-negative occurs when a pooled test containing Donald's sample
