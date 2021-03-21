@@ -2,7 +2,7 @@
 \input{definitions}
 
 \begin{document}
-\title{An Accurate Model for SARS-CoV-2 pooled RT-PCR Tests Errors}
+\title{An Accurate Model for SARS-CoV-2 pooled RT-PCR Test Errors}
 
 \author[1,2]{Yair Daon, PhD}
 \author[2,3]{Amit Huppert, PhD}
@@ -97,7 +97,7 @@ false-negative rates for Dorfman pooling.
 Before delving into our probabilistic assumptions, we briefly explain
 the process of testing for SARS-CoV-2 by RT-PCR in
 Section~\ref{subsec:rtpcr}. Our exposition intentionally avoids many
-details and a comprehensive review of RT-PCR can be found in
+details, and a comprehensive review of RT-PCR can be found in
 \cite{COVID-RTPCR, PCRBook}. We then present the \emph{common
   assumption} in Section~\ref{subsec:common} and refute it in
 Section~\ref{subsec:refute}. Our model is presented in
@@ -162,8 +162,8 @@ pool \cite{Kim, OptimalDorfmanPool}. Current studies of pooling in the
 context of SARS-CoV-2 also employ similar assumptions
 \cite{Simplistic1, Simplistic2}. Specifically, these studies assume
 that the probability of a negative result is the same for a pool with
-a single sample coming from an infected individual and (e.g.)
-five. Explicitly:
+a single sample coming from an infected individual and several
+ samples from infected individuals. Explicitly:
 
 \begin{align}\label{eq:common}
   \Pr(\data=0|\theta) = 
