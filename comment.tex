@@ -72,27 +72,25 @@ key component in breaking transmission chains and mitigating the
 COVID-19 pandemic. As such, the need for large-scale testing has
 resulted in the development of techniques to increase the the
 throughput of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30,
-  BayesianDorfman, MatrixPooling, LionDorfman}. These techniques are
-called \emph{pooling} and originated in the seminal work of Dorfman
-pooling \cite{DorfmanOriginal, DorfmanYuvalDor}: Select $N$
-individuals and perform a single RT-PCR test on their combined
-(\emph{pooled}) samples. If the pooled test yields a positive result
---- test each individual separately. The throughput efficiency of
+  BayesianDorfman, MatrixPooling, LionDorfman}. These techniques, often termed
+ \emph{pooling}, or group testing,  have originated in the seminal work of Dorfman et al. and their pooling technique
+ \cite{DorfmanOriginal, DorfmanYuvalDor}. Under Dorfman pooling, one selects $N$
+individuals and performs a single RT-PCR test on their combined
+(\emph{pooled}) samples. If the pooled test yields a positive result, then  each individual is retested separately; otherwise, everyone is declared negative. The throughput efficiency of
 Dorfman pooling for has been demonstrated empirically
 \cite{DorfmanYuvalDor} and its error rates thoroguhly investigated
 \cite{Kim, Simplistic1, OptimalDorfmanPool}.
 
 Pooling RT-PCR tests is not perfect, and there is always some nonzero
-probability of error. Typically, authors assume the probability of a
-true-positive (the test's \emph{sensitivity}) does not depend on the
+probability of error. Typically, previous research assumed that the probability of a true-positive (the test's \emph{sensitivity}) does not depend on the
 number of infected samples in the pool, but rather on the existence of
 at least one such sample. Thus, the probability of a positive result
-in a pooled test is (assumed) identical for a pool with one sample
-from an infected individual and (e.g.) five such samples. This
+in a pooled test has been (assumed) identical for a pool with one sample
+from an infected individual and, e.g., five such samples. This
 assumption is common in the group testing literature \cite{Kim,
   OptimalDorfmanPool}, as well as in more specific, COVID-19 focused
 studies \cite{Simplistic1, Simplistic2}. In this study we refute these
-commonly made assumptions and show how they affect estimation of
+commonly made assumptions and show how using a more accurate probabilistic model affects estimation of
 false-negative rates for Dorfman pooling.
 
 \section{Methods}
