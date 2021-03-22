@@ -8,32 +8,18 @@
 \author[2,3]{Amit Huppert, PhD}
 \author[1,2]{Uri Obolski, PhD}
 
-\affil[1]{Porter School of the Environment and Earth Sciences, The Faculty of Exact Sciences, Tel Aviv
+\affil[1]{Porter School of the Environment and Earth Sciences, The
+  Faculty of Exact Sciences, Tel Aviv University\\ Tel Aviv, Israel}
+
+\affil[2]{School of Public Health, The Faculty of Medicine, Tel Aviv
   University\\ Tel Aviv, Israel}
-\affil[2]{School of Public Health, The Faculty of Medicine, Tel Aviv University\\ Tel Aviv, Israel}
-\affil[3]{The Gertner Institute for Epidemiology and Health Policy Research, Tel Hashomer, Israel}
+
+\affil[3]{The Gertner Institute for Epidemiology and Health Policy
+  Research, Tel Hashomer, Israel}
 %\email{yair.daon@gmail.com}
 \date{}
 
 \maketitle
-%%% MAKE TITLE PAGE %%%
-%% \bigskip
-%% \bigskip
-%% \bigskip
-%% \bigskip
-%% \begin{itemize}
-%%     \item Article type: Brief report.
-%%     \item Corresponding author: Uri Obolski, email uriobols@tauex.tau.ac.il, Phone +972526309508
-%%     \item Running head: Inflated false-negative rates in pooled SARS-CoV-2 tests.
-%%     \item Conflict of interests: None.
-%%     \item Financial support: Yair Daon was supported by a
-%%     post-doctoral fellowship from the Tel Aviv University Center for
-%%     Combating Pandemics and the Raymond and Beverly Sackler Dean's
-%%     Post-Doctoral fellowship.
-%%     \item Data is presented in the manuscript itself and can be found in a paper we reference to. Calculations are simple and can be easily implemented in any programming language.
-%% \end{itemize}
-%% \newpage
-
 
 \begin{abstract}
 \textbf{Background}: Pooling is a popular strategy for increasing
@@ -72,37 +58,37 @@ key component in breaking transmission chains and mitigating the
 COVID-19 pandemic. As such, the need for large-scale testing has
 resulted in the development of techniques to increase the the
 throughput of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30,
-  BayesianDorfman, MatrixPooling, LionDorfman}. These techniques, often termed
- \emph{pooling}, or group testing, have originated in the seminal work of Dorfman and his pooling technique
- \cite{DorfmanOriginal, DorfmanYuvalDor}. Under Dorfman pooling, one selects $N$
-individuals and performs a single RT-PCR test on their combined
-(\emph{pooled}) samples. If the pooled test yields a positive result, then each individual is retested separately; otherwise, everyone is declared negative. The throughput efficiency of
-Dorfman pooling for has been demonstrated empirically
-\cite{DorfmanYuvalDor} and its error rates thoroguhly investigated
-\cite{Kim, Simplistic1, OptimalDorfmanPool}.
+  BayesianDorfman, MatrixPooling, LionDorfman}. These techniques,
+often termed \emph{pooling}, or group testing, have originated in the
+seminal work of Dorfman and his pooling technique
+\cite{DorfmanOriginal, DorfmanYuvalDor}. Under Dorfman pooling, one
+selects $N$ individuals and performs a single RT-PCR test on their
+combined (\emph{pooled}) samples. If the pooled test yields a positive
+result, then each individual is retested separately; otherwise,
+everyone is declared negative. The throughput efficiency of Dorfman
+pooling for has been demonstrated empirically \cite{DorfmanYuvalDor}
+and its error rates thoroguhly investigated \cite{Kim, Simplistic1,
+  OptimalDorfmanPool}.
 
-Previous studies assumed that the probability of a true-positive (the test's \emph{sensitivity}) does not depend on the
-number of infected samples in the pool, but rather on the existence of
-at least one such sample. Thus, the probability of a positive result
-in a pooled test has been (assumed) identical for a pool with one sample
-from an infected individual and, e.g., five such samples. This
-assumption is common in the group testing literature \cite{Kim,
-  OptimalDorfmanPool}, as well as in more specific, COVID-19 focused
-studies \cite{Simplistic1, Simplistic2}. In this study we challenge these
-commonly made assumptions and show how using a more accurate probabilistic model affects estimation of
-false-negative rates for Dorfman pooling.
-
-\section{Methods}
-Before delving into our probabilistic assumptions, we briefly explain
-the process of testing for SARS-CoV-2 by RT-PCR in
-Section~\ref{subsec:rtpcr}. Our exposition intentionally avoids many
-details, and a comprehensive review of RT-PCR can be found in
-\cite{COVID-RTPCR, PCRBook}. We then present the \emph{common
-  assumption} in Section~\ref{subsec:common} and refute it in
-Section~\ref{subsec:refute}. Our model is presented in
-Section~\ref{subsec:ours}.
+Previous studies assumed that the probability of a true-positive (the
+test's \emph{sensitivity}) does not depend on the number of infected
+samples in the pool, but rather on the existence of at least one such
+sample. Thus, the probability of a positive result in a pooled test
+has been (assumed) identical for a pool with one sample from an
+infected individual and, e.g., five such samples. This assumption is
+common in the group testing literature \cite{Kim, OptimalDorfmanPool},
+as well as in more specific, COVID-19 focused studies
+\cite{Simplistic1, Simplistic2}. In this study we challenge these
+commonly made assumptions and show how using a more accurate
+probabilistic model affects estimation of false-negative rates for
+Dorfman pooling.
 
 \subsection{RT-PCR}\label{subsec:rtpcr}
+We briefly explain the process of testing for SARS-CoV-2 by RT-PCR in
+Section~\ref{subsec:rtpcr}. Our exposition intentionally avoids many
+details, and a comprehensive review of RT-PCR can be found in
+\cite{COVID-RTPCR, PCRBook}.
+
 PCR is a process in which a targeted DNA strand's frequency is
 amplified to create billions of copies in a reaction mixture. At the
 end of this \emph{amplification} process, the presence of targeted DNA
@@ -133,6 +119,7 @@ transcriptase (hence the RT in RT-PCR) replicates existing RNA in the
 reaction mixture into DNA. Once DNA replicas are made, the PCR process
 proceeds as described above, targeting SARS-CoV-2 DNA replicas.
 
+\subsection{Pooling}
 One possible source of failed detection of SARS-CoV-2 RNA in pooled
 RT-PCR testing (a \emph{false-negative}) is sample dilution. When
 pooling, several samples are mixed, so the concentration of viral RNA
@@ -144,6 +131,12 @@ failed sampling process.
 %% However, \cite{Lion} showed that this effect can be
 %% safely ignored when mixing up to 32 samples, which we correspondingly
 %% assume.
+
+
+\section{Methods}
+We present the \emph{common assumption} in Section~\ref{subsec:common}
+and refute it in Section~\ref{subsec:refute}. Our model is presented
+in Section~\ref{subsec:ours}.
 
 Formally, we consider a pool containing $N$ individuals
 $\{1,\dots,N\}$. We denote the true infection states $\theta \in
@@ -314,7 +307,7 @@ Figure~\ref{fig:likelihood}, and summarized in
 \subsection{Application}
 As an application of our model, we calculate the differnece in
 false-negative rate for a single \emph{infected} individual,
-henceforth referred to as "Donald".  We distinguish three types of
+henceforth referred to as "Donald". We distinguish three types of
 false-negative events when performing pooling. A \emph{single test}'s
 false-negative is the event of a negative result upon testing Donald
 separately, i.e., in an RT-PCR test without pooling. A \emph{pooled}
@@ -334,11 +327,14 @@ so that $\theta_1=1$. Then:
 
 \begin{align}
   \begin{split}
-    \Pr(\data=0|\theta_1=1) &= \sum_{\theta_2,\dots,\theta_N} \Pr(\theta_2,\dots,\theta_N) \Pr(\data=0|\theta_1=1,\theta_2,\dots,\theta_N) \\
+    \Pr(\data=0|\theta_1=1) &= \sum_{\theta_2,\dots,\theta_N}
+    \Pr(\theta_2,\dots,\theta_N)
+    \Pr(\data=0|\theta_1=1,\theta_2,\dots,\theta_N) \\
     %
     %
     %
-    &= \sum_{k=0}^{N-1}\Pr(\sum_{i=2}^N\theta_i=k)\Pr(\data=0|\theta_1=1,\sum_{i=2}^N\theta_i = k)\\
+    &= \sum_{k=0}^{N-1}\Pr(\sum_{i=2}^N\theta_i=k)
+    \Pr(\data=0|\theta_1=1,\sum_{i=2}^N\theta_i = k)\\
     %
     %
     %
@@ -346,7 +342,8 @@ so that $\theta_1=1$. Then:
     %
     %
     %
-    &= \Sp(1-\Se) \sum_{k=0}^{N-1}\binom{N-1}{k}\left(q(1-\Se)\right)^k(1-q)^{N-1-k}\\
+    &= \Sp(1-\Se) \sum_{k=0}^{N-1}\binom{N-1}{k}
+    \left(q(1-\Se)\right)^k(1-q)^{N-1-k}\\
     %
     %
     %
@@ -388,43 +385,54 @@ $\rel{common} := 100\cdot \Se$.
 
 \section{Results}\label{section:results}
 We plot $\rel{ours}$ for varying prevalence $q$ and sensitivity $\Se$
-values. As recommended by \cite{DorfmanYuvalDor}, we apply different
-pool sizes $N$, for different prevalence values. We observe that for a
-false-positive rate $\Sp=0.95$ \cite{DorfmanYuvalDor} and a range of
-reasonable sensitivity and prevalence values \cite{KitComparison,
+values, and make the comparison with $\rel{common}$. As recommended by
+\cite{DorfmanYuvalDor}, we apply different pool sizes $N$, for
+different prevalence values. We observe that for a false-positive rate
+$\Sp=0.95$ \cite{DorfmanYuvalDor} and a range of reasonable
+sensitivity and prevalence values \cite{KitComparison,
   InterpretingCOVID19Test, EstimatingRatesLourenco,
   FalsePositiveEstimate}, an increase of at least $60\%$ in
-$\rel{ours}$ can be expected (Figure \ref{figy}). Interestingly, an
-increase in infection prevalence monotonically decreases the scheme
-false-negative rate, as can also be easily seen from equation
-\eqref{eq:sfn}. For the chosen parameter ranges, the increase in the
-single test false-negative rates increases the relative error
-$\rel{ours}$. These effects can be seen in Figure \ref{figy} (left panel),
-upon conditioning on pool size. Extending the range for $\Sp$ yields
-no qualitative differences. We further compare $\rel{ours}$ to
+$\rel{ours}$ can be expected (Figure \ref{figy}).
+
+Interestingly, an increase in infection prevalence monotonically
+decreases the scheme false-negative rate, as can also be easily seen
+from \eqref{eq:sfn}. For the chosen parameter ranges, the increase in
+the single test false-negative rates increases the relative error
+$\rel{ours}$. These effects can be seen in Figure \ref{figy} (left
+panel), upon conditioning on pool size. Extending the range for $\Sp$
+yields no qualitative differences. We further compare $\rel{ours}$ to
 $\rel{common}$, showing the discrepancy changes as a function of both
 prevalence and the single test sensitivity (Figure \ref{figy}, right
 panel).
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=18cm]{heatmap.jpg}
-    \caption{Relative increase in Dorfman pooling false-negative rates
-      $\rel{ours}$. Left: Colors represent $\rel{ours}$, the relative
-      percentage increase in the scheme false-negative rates relative
-      to the single test false-negative rates (eq
-      \eqref{eq:erel}). Right: colors represent the difference between
-      $\rel{common}$ and $\rel{ours}$. The disease prevalence $q$, is
-      varied on the x-axis, while the test sensitivity is varied on
-      the y-axis. Pool size $N$, was chosen according to $q$ as in
-      \cite{DorfmanYuvalDor}.}\label{figy}
- \end{figure}
+  \centering
+  \includegraphics[width=18cm]{heatmap.jpg}
+  \caption{Relative increase in Dorfman pooling false-negative rates
+    $\rel{ours}$. Left: Colors represent $\rel{ours}$, the relative
+    percentage increase in the scheme false-negative rates relative
+    to the single test false-negative rates (eq
+    \eqref{eq:erel}). Right: colors represent the difference between
+    $\rel{common}$ and $\rel{ours}$. The disease prevalence $q$, is
+    varied on the x-axis, while the test sensitivity is varied on
+    the y-axis. Pool size $N$, was chosen according to $q$ as in
+    \cite{DorfmanYuvalDor}.}\label{figy}
+\end{figure}
 
 
 \section{Discussion}
-Although Dorfman pooling improves testing throughput, we have shown
-that it can increase $\rel{ours}$ --- the false-negative rates relative to
-individual testing. Furthermore, low values of infection prevalence,
-or low values of single test false-negative rates, increase
+We have presented a novel model for pooled tests. It is hard to
+assess the validity of our model, since this would require
+considerably more data than available in \cite{Salazar}. However, our
+model is as simple as possible, given that the standard assumptions
+are refuted. We have no doubt that further study of the assumptions
+underlying pooling is due. Furthermore, adapting common group testing
+algorithms \cite{Kim} to novel error models should be further
+studied.
+
+Our revised model has some implications for the practice of
+pooling. For example, although Dorfman pooling improves testing
+throughput, we have shown that low values of infection prevalence, or
+low values of single test false-negative rates, increase
 $\rel{ours}$. These results remain qualitatively similar under varying
 parameter values, in the observed ranges
 \cite{KitComparison,EstimatingRatesKucrika, EstimatingRatesLourenco,
@@ -433,38 +441,38 @@ parameter values, in the observed ranges
 Our results lead to a fact almost disregarded in
 \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
 when prevalence is low, such circumstances are exactly those leading
-to a substantial increase in false-negative rates.
+to a substantial increase in false-negative rates. Such behavior of
+pooling is not implied by the common assumption
 
-%% An approximation to our results has been previously considered: $\mi
-%% \approx 1-\Se^2 $, see \cite{Simplistic1, Simplistic2, Kim,
-%%   OptimalDorfmanPool}. Such an approximation arises when one assumes
-%% that the probability of a false-negative is identical for the pooled
-%% and single tests. Although simplistic in nature, this approximation
-%% does capture the intuition behind our results: For Donald to be
-%% considered negative under Dorfman pooling, he has to test negative
-%% twice. In addition to this approximation only being an upper bound
-%% \cite{Simplistic2}, it does not account for the effect of infection
-%% prevalence on the false-negative rates under Dorfman
-%% pooling. Supporting the importance of this effect, such an association
-%% between prevalence and the scheme false-negative rate under Dorfman
-%% pooling has been empirically noted \cite{DorfmanYuvalDor}.
 
-%% Although we have shown the inherent risk of Dorfman pooling, this
-%% shortcoming applies to other pooling schemes. Pooling schemes
-%% (e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
-%% positive pooled results to correctly identify Donald as
-%% infected. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
-%% If the first pool yields a positive result, it is split in two. Then
-%% the splitting is repeated until resulting pools are negative or
-%% individuals are tested separately. With an initial pool size of 32,
-%% Donald will necessarily have to test positive in pools of size 32, 16,
-%% 8, 4 and 2, as well as in a single test, for the scheme to correctly
-%% identify him as infected. Compare this to the Dorfman scheme that
-%% requires a positive test in a pool of size $N=8$, and an additional
-%% single positive test to identify Donald as infected. The hierarchical
-%% pooling scheme of \cite{Lion, Kim} will necessarily yield more
-%% false-negatives than Dorfman pooling --- there are additional places
-%% for it to fail.
+%% The common assumption implies that one assumes that the probability of
+%% a false-negative is identical for the pooled and single
+%% tests. Although simplistic in nature, the common assumption does capture
+%% the intuition behind our results: For Donald to be considered negative
+%% under Dorfman pooling, he has to test negative twice. In addition to
+%% this approximation only being an upper bound \cite{Simplistic2}, it
+%% does not account for the effect of infection prevalence on the
+%% false-negative rates under Dorfman pooling. Supporting the importance
+%% of this effect, such an association between prevalence and the scheme
+%% false-negative rate under Dorfman pooling has been empirically noted
+%% \cite{DorfmanYuvalDor}.
+
+Although our application focused on Dorfman pooling, our analysis
+applies to other pooling schemes. Pooling schemes
+(e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
+positive pooled results to correctly identify Donald as
+infected. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
+If the first pool yields a positive result, it is split in two. Then
+the splitting is repeated until resulting pools are negative or
+individuals are tested separately. With an initial pool size of 32,
+Donald will necessarily have to test positive in pools of size 32, 16,
+8, 4 and 2, as well as in a single test, for the scheme to correctly
+identify him as infected. Compare this to the Dorfman scheme that
+requires a positive test in a pool of size $N=8$, and an additional
+single positive test to identify Donald as infected. The hierarchical
+pooling scheme of \cite{Lion, Kim} will necessarily yield more
+false-negatives than Dorfman pooling --- there are additional places
+for it to fail.
 
 As mentioned in \cite{DorfmanYuvalDor}, introducing a positive
 dependence within a pool decreases the false-positive rate. In the
