@@ -137,7 +137,7 @@ failed sampling process.
 
 
 \section{Methods}
-We present the \emph{common assumption} in Section~\ref{subsec:common}
+We define and present the \emph{common assumption} in Section~\ref{subsec:common}
 and refute it in Section~\ref{subsec:refute}. Our model is presented
 in Section~\ref{subsec:ours}.
 
@@ -376,7 +376,7 @@ The difference per person is:
 
 
 \subsection{Scheme false-negative rate}
-We calculate the false-negative rate of Dorfman's pooling scheme.  The
+We calculate the false-negative rate of Dorfman's pooling scheme. The
 false-negative rate for a single \emph{infected} individual,
 henceforth referred to as "Donald" under our model and under the
 common assumption. We distinguish three types of false-negative events
@@ -507,28 +507,17 @@ The efficiency is words...
 
 
 \section{Discussion}
-This is my suggestion for a Discussion structure:
-short recap; implications for group testing in different prevalence settings; limitations; ways to reduce errors (*cough* DOPE); conclusion/take home message
 
-We have presented a novel model for pooled tests. It is hard to
-assess the validity of our model, since this would require
-considerably more data than available in \cite{Salazar}. However, our
-model is as simple as possible, given that the standard assumptions
-are refuted. We have no doubt that further study of the assumptions
-underlying pooling is due. Furthermore, adapting common group testing
-algorithms \cite{Kim} to novel error models should be further
-studied.
+\subsection{Short recap}
+We have presented a novel model for SARS-CoV-2 pooled tests. To the best of our knowledge, ours is the
+only one that is actually based on experimental data.
 
-Our results have practical implications for the use of
-pooling schemes. As the COVID-19 pandemic progresses, the infection prevalence in various tested populations undergoes frequent changes. Hence, as our results suggest, pooling strategies for mass testing should be used with caution in populations where infection rates are low. Such mass-tested populations often include air travel passengers \cite{JTM}, potentially importing infections, or asymptomatic individuals, such as children, and can be crucial for controlling outbreaks \cite{MinaScience}.
-
-For example, although Dorfman pooling improves testing
-throughput, we have shown that low values of infection prevalence, or
+we have shown that low values of infection prevalence, or
 low values of single test false-negative rates, increase
 $\err{exact}$. These results remain qualitatively similar under varying
 parameter values, in the observed ranges
 \cite{KitComparison,EstimatingRatesKucrika, EstimatingRatesLourenco,
-  InterpretingCOVID19Test} (Figure \ref{figy}). Hence, 
+  InterpretingCOVID19Test} (Figure \ref{figy}).
 
 Our results lead to a fact almost disregarded in
 \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
@@ -536,6 +525,27 @@ when prevalence is low, such circumstances are exactly those leading
 to a substantial increase in false-negative rates. Such behavior of
 pooling is not implied by the common assumption
 
+
+\subsection{Imlications for group testing in different prevalence settings}
+Our results have practical implications for the use of
+pooling schemes. As the COVID-19 pandemic progresses, the infection prevalence in various tested populations undergoes frequent changes. Hence, as our results suggest, pooling strategies for mass testing should be used with caution in populations where infection rates are low. Such mass-tested populations often include air travel passengers \cite{JTM,RobinHood}, potentially importing infections, or asymptomatic individuals, such as children, and can be crucial for controlling outbreaks \cite{MinaScience}.
+
+\subsection{Limitations}
+Lacking large amounts of experimental data, it is hard to
+assess the validity of our model. The data in \cite{Salazar} does allow us to reject the 
+common assumption but not much more. However, our model is as simple as possible, given that the standard assumptions are refuted.
+
+\subsection{Ways to reduce errors} 
+
+\subsection{Conclusion}
+We have no doubt that further study of the assumptions
+underlying pooling is due. Furthermore, adapting common group testing
+algorithms \cite{Kim} to novel error models should be further
+studied.
+
+
+For example, although Dorfman pooling improves testing
+throughput, 
 
 %% The common assumption implies that one assumes that the probability of
 %% a false-negative is identical for the pooled and single
