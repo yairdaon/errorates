@@ -72,7 +72,7 @@ its error rates thoroguhly investigated \cite{Kim, Simplistic1,
 
 Studies focused on pooling for SARS-CoV-2 are in a consensus that
 sample dilution effects \cite{DilutionHIV, GroupDilution} are not a
-concern for pools as large as 64 individuals \cite{Lion,
+concern for pools as large as 64 individuals \cite{PoolSize30, Lion,
   DorfmanYuvalDor, DilutionCOVID}. Consequently, studies assumed that
 the probability of a true-positive (the test's \emph{sensitivity})
 does not depend on the number of infected samples in the pool, but
@@ -212,7 +212,7 @@ assumption.
 \caption{Contingency table of data from \cite{Salazar}}\label{table}
 \end{table}
 
-\subsection{Our model}
+\subsection{Our model}\label{subsec:ours}
 Since the essence of the failed common assumption is that
 amplification of all samples occurs only once, we assume the opposite:
 amplification of viral RNA occurs (or fails) for each sample
@@ -463,17 +463,17 @@ $\Sp=0.95$ \cite{DorfmanYuvalDor} and a range of reasonable
 sensitivity and prevalence values \cite{KitComparison,
   InterpretingCOVID19Test, EstimatingRatesLourenco,
   FalsePositiveEstimate}, an increase of at least $60\%$ in
-$\err{exact}$ can be expected (Figure \ref{figy}).
+$\err{exact}$ can be expected (Figure \ref{fig1}).
 
 Interestingly, an increase in infection prevalence monotonically
 decreases the scheme false-negative rate, as can also be easily seen
 from \eqref{eq:sfn}. For the chosen parameter ranges, the increase in
 the single test false-negative rates increases the relative error
-$\err{exact}$. These effects can be seen in Figure \ref{figy} (left
+$\err{exact}$. These effects can be seen in Figure \ref{fig1} (left
 panel), upon conditioning on pool size. Extending the range for $\Sp$
 yields no qualitative differences. We further compare $\err{exact}$ to
 $\err{common}$, showing the discrepancy changes as a function of both
-prevalence and the single test sensitivity (Figure \ref{figy}, right
+prevalence and the single test sensitivity (Figure \ref{fig1}, right
 panel).
 \begin{figure}[H]
   \centering
@@ -486,7 +486,7 @@ panel).
     $\err{common}$ and $\err{exact}$. The disease prevalence $q$, is
     varied on the x-axis, while the test sensitivity is varied on
     the y-axis. Pool size $N$, was chosen according to $q$ as in
-    \cite{DorfmanYuvalDor}.}\label{figy}
+    \cite{DorfmanYuvalDor}.}\label{fig1}
 \end{figure}
 
 \subsection{Scheme efficiency}
@@ -508,7 +508,7 @@ test sensitivity rates $\Se$.
     $\eff{common}$ and $\eff{exact}$. The disease prevalence $q$, is
     varied on the x-axis, while the test sensitivity is varied on
     the y-axis. Pool size $N$, was chosen according to $q$ as in
-    \cite{DorfmanYuvalDor}.}\label{figy}
+    \cite{DorfmanYuvalDor}.}\label{fig2}
 \end{figure}
 
 
@@ -524,7 +524,7 @@ low values of single test false-negative rates, increase
 $\err{exact}$. These results remain qualitatively similar under varying
 parameter values, in the observed ranges
 \cite{KitComparison,EstimatingRatesKucrika, EstimatingRatesLourenco,
-  InterpretingCOVID19Test} (Figure \ref{figy}).
+  InterpretingCOVID19Test} (Figure \ref{fig1}).
 
 Our results lead to a fact almost disregarded in
 \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
@@ -584,7 +584,7 @@ pooling is due. Furthermore, adapting common group testing algorithms
 \cite{Kim} to novel error models should be further studied.
 
 
-For example, although Dorfman pooling improves testing throughput,
+%% For example, although Dorfman pooling improves testing throughput,
 
 %% The common assumption implies that one assumes that the probability of
 %% a false-negative is identical for the pooled and single
@@ -610,14 +610,17 @@ between the pooled individuals \cite{DorfmanYuvalDor}, providing
 another advantage to sampling dependent individuals in pooling
 schemes.
 
-To conclude, pooling is an important technique which can improve
-testing throughput in a cost-effective manner. Nevertheless, a
-substantial increase in pooling schemes' false-negative rates can be
-expected. Such an increase has crucial implications for controlling
-the spread of COVID-19.
 
-\bibliographystyle{amsplain}
-%\bibliographystyle{ama}
+To conclude, pooling is an important technique which can improve
+testing throughput in a cost-effective manner. Nevertheless, care must
+be given to pooling schemes' false-negative rates and
+efficiency. These are analyzed via a common assumption that we refute.
+The implications of refuting the common assumption were presented and
+should be considered by practitioners.
+
+
+%\bibliographystyle{amsplain}
+\bibliographystyle{ama}
 \bibliography{refs}
 
 \end{document}
