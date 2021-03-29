@@ -51,8 +51,9 @@ accurate. The deterioration of false-negative rates and the
 aforementioned trade-off are inherent problems of pooling schemes and
 should be kept in mind by practitioners and policy makers.
 \end{abstract}
+\newpage
 
-\section{Introduction}
+\section*{Introduction}
 Reverse transcription polymerase chain reaction (RT-PCR) testing is a
 key component in breaking transmission chains and mitigating the
 COVID-19 pandemic. As such, the need for large-scale testing has
@@ -86,60 +87,60 @@ this study we challenge these commonly made assumptions and show how
 using a more accurate probabilistic model affects estimation of
 false-negative rates for Dorfman pooling.
 
-\subsection{RT-PCR}\label{subsec:rtpcr}
-We briefly explain the process of testing for SARS-CoV-2 by RT-PCR in
-Section~\ref{subsec:rtpcr}. Our exposition intentionally avoids many
-details, and a comprehensive review of RT-PCR can be found in
-\cite{COVID-RTPCR, PCRBook}.
+% \subsection{RT-PCR}\label{subsec:rtpcr}
+% We briefly explain the process of testing for SARS-CoV-2 by RT-PCR in
+% Section~\ref{subsec:rtpcr}. Our exposition intentionally avoids many
+% details, and a comprehensive review of RT-PCR can be found in
+% \cite{COVID-RTPCR, PCRBook}.
 
-PCR is a process in which a targeted DNA strand's frequency is
-amplified to create billions of copies in a reaction mixture. At the
-end of this \emph{amplification} process, the presence of targeted DNA
-molecules in a reaction mixture can be confidently
-determined. Arguably, the best way to understand PCR is as a chain
-reaction: Each targeted DNA molecule is copied into two, that are
-copied into four and so forth. This cascade gives PCR its name:
-polymerase chain reaction.
+% PCR is a process in which a targeted DNA strand's frequency is
+% amplified to create billions of copies in a reaction mixture. At the
+% end of this \emph{amplification} process, the presence of targeted DNA
+% molecules in a reaction mixture can be confidently
+% determined. Arguably, the best way to understand PCR is as a chain
+% reaction: Each targeted DNA molecule is copied into two, that are
+% copied into four and so forth. This cascade gives PCR its name:
+% polymerase chain reaction.
 
-Specifically, the PCR process is comprised of cycles, with each cycle
-doubling the abundance of the targeted DNA. In each cycle, each
-double-strand DNA molecule is broken into two separate strands. An
-enzyme called DNA polymerase generates a new double-strand DNA replica
-from each separate strand. Replication cannot start without a specific
-short DNA sequence, called a primer, that has to be introduced into
-the reaction mixture. Introducing the right primer into the reaction
-mixture ensures (almost) only the targeted DNA sequence is copied. A
-protein is added to the reaction mixture, which emits light upon
-successfully binding the targeted DNA. Once enough light is emitted
-the tested reaction mixture is declared positive and a
-\emph{detection} is said to occur. If, on the other hand, a predefined
-number of cycles pass without a detection event then the reaction
-mixture is declared negative.
+% Specifically, the PCR process is comprised of cycles, with each cycle
+% doubling the abundance of the targeted DNA. In each cycle, each
+% double-strand DNA molecule is broken into two separate strands. An
+% enzyme called DNA polymerase generates a new double-strand DNA replica
+% from each separate strand. Replication cannot start without a specific
+% short DNA sequence, called a primer, that has to be introduced into
+% the reaction mixture. Introducing the right primer into the reaction
+% mixture ensures (almost) only the targeted DNA sequence is copied. A
+% protein is added to the reaction mixture, which emits light upon
+% successfully binding the targeted DNA. Once enough light is emitted
+% the tested reaction mixture is declared positive and a
+% \emph{detection} is said to occur. If, on the other hand, a predefined
+% number of cycles pass without a detection event then the reaction
+% mixture is declared negative.
 
-Since the genetic material of SARS-CoV-2 is RNA rather than DNA, an
-extra preprocessing step is required. An enzyme called reverse
-transcriptase (hence the RT in RT-PCR) replicates existing RNA in the
-reaction mixture into DNA. Once DNA replicas are made, the PCR process
-proceeds as described above, targeting SARS-CoV-2 DNA replicas.
+% Since the genetic material of SARS-CoV-2 is RNA rather than DNA, an
+% extra preprocessing step is required. An enzyme called reverse
+% transcriptase (hence the RT in RT-PCR) replicates existing RNA in the
+% reaction mixture into DNA. Once DNA replicas are made, the PCR process
+% proceeds as described above, targeting SARS-CoV-2 DNA replicas.
 
-\subsection{Pooling}
-One possible source of failed detection of SARS-CoV-2 RNA in pooled
-RT-PCR testing (a \emph{false-negative}) is sample dilution. When
-pooling, several samples are mixed, so the concentration of viral RNA
-is reduced. This effect may cause a delay in amplification
-\cite{DorfmanYuvalDor}, no detection and, consequently, a
-false-negative. Another potential source for false-negatives is a
-failed sampling process. 
+%\subsection{Pooling}
+% One possible source of failed detection of SARS-CoV-2 RNA in pooled
+% RT-PCR testing (a \emph{false-negative}) is sample dilution. When
+% pooling, several samples are mixed, so the concentration of viral RNA
+% is reduced. This effect may cause a delay in amplification
+% \cite{DorfmanYuvalDor}, no detection and, consequently, a
+% false-negative. Another potential source for false-negatives is a
+% failed sampling process. 
 
 %% However, \cite{Lion} showed that this effect can be
 %% safely ignored when mixing up to 32 samples, which we correspondingly
 %% assume.
 
 
-\section{Methods}
-We define and present the \emph{common assumption} in Section~\ref{subsec:common}
-and refute it in Section~\ref{subsec:refute}. Our model is presented
-in Section~\ref{subsec:ours}.
+\section*{Methods}
+% We define and present the \emph{common assumption} in Section~\ref{subsec:common}
+% and refute it in Section~\ref{subsec:refute}. Our model is presented
+% in Section~\ref{subsec:ours}.
 
 Formally, we consider a pool containing $N$ individuals
 $\{1,\dots,N\}$. We denote the true infection states $\theta \in
@@ -149,7 +150,7 @@ test's specificity (true-positive rate) is denoted $\spec$. Pooled
 test result (data) is denoted $\data$, where $\data=0$ iff the test
 returned a negative result.
 
-\subsection{The common assumption}\label{subsec:common}
+\subsection*{The common assumption}\label{subsec:common}
 Previous studies of group testing strategies assumed that the
 false-negative probability does not depend on the number of infected
 samples, but merely on the existence of at least one such sample in a
@@ -169,14 +170,13 @@ a single sample coming from an infected individual and several
 \end{align}
 
 Below, we refer to \eqref{eq:common} as the \emph{common
-  assumption}. The essence of the common assumption is that
-amplification takes place for all samples at once.
+  assumption}. 
 %% We refute the assumptions underlying \eqref{eq:common} in
 %% Section~\ref{subsec:ours} and suggest more plausible ones in
 %% Section~\ref{subsec:ours}.
 
 
-\subsection{Refuting the common assumption}\label{subsec:refute}
+\subsection*{Refuting the common assumption}\label{subsec:refute}
 We refute the common assumption with experimental data summarized in
 Table \ref{table}, collected from \cite{Salazar}. There, the authors
 investigate Dorfman pooling and, regardless of the pooled test result,
@@ -212,12 +212,12 @@ assumption.
 \caption{Contingency table of data from \cite{Salazar}}\label{table}
 \end{table}
 
-\subsection{Our model}\label{subsec:ours}
-Since the essence of the failed common assumption is that
+\subsection*{Our model}\label{subsec:ours}
+Since the essence of the refuted common assumption is that
 amplification of all samples occurs only once, we assume the opposite:
 amplification of viral RNA occurs (or fails) for each sample
-independently.  According to \cite{Simplistic1, Simplistic2, Kim,
-  OptimalDorfmanPool}, erroneous detection (a false-positive) does not
+independently. According to \cite{Simplistic1, Simplistic2, Kim,
+  OptimalDorfmanPool}, a false-positive does not
 depend on the number of negative samples in a pool. We incorporate
 this assumption in our model with a small modification: We assume that
 an erroneous amplification can occur in \emph{any} pool. Specifically,
@@ -227,6 +227,47 @@ current application of screening for SARS-CoV-2 via RT-PCR. For
 example, cross-reactivity with other coronaviruses would have violated
 this assumption. However, cross-reactivity was ruled out in
 \cite{KitComparison}.
+% To summarize, we assume that for a single pool, a positive test result
+% is generated in one of two paths. Either, SARS-CoV-2 RNA from an
+% infected individual's sample is correctly amplified and detected, and
+% this can happen for each positive sample in a pool, with probability
+% $\Se$. Or, some erroneous amplification occurs (e.g. contaminant viral
+% RNA is introduced), an event that occurs at most once per pool, with
+% probability $1-\Sp$.
+These assumptions lead to our model, which is illustrated in 
+Figure~\ref{fig:likelihood} and summarized in
+%% A negative pooled test result occurs when all detection paths (both
+%% correct and erroneous) fail. The probability of no false-detection
+%% accounts for the $\spec$ term. The probability of no correct detection
+%% is $(1-\sens)$ per infected individual. The probability that all such
+%% paths fail is the product of the above mentioned terms, displayed in
+\eqref{eq:likelihood a}.%%  The probability of a positive result,
+%% presented in \eqref{eq:likelihood b}, is simply the complement.
+%% The probability of a negative pooled test result is presented in
+%% \eqref{eq:likelihood a} (along with its complement
+%% \eqref{eq:likelihood b}), and explained below.
+%\begin{subequations}
+\begin{align}%\label{eq:single likelihood}
+  %\begin{split}
+    \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N
+    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum_i\theta_i}. \label{eq:likelihood a}
+    %
+    %
+    %
+    %% \Pr(\data=1 | \theta) &= 1 - \spec\prod_{i=1}^N
+    %% (1-\sens)^{\theta_i} = 1 - \spec(1-\Se)^{\sum\theta_i} . \label{eq:likelihood b}
+  %\end{split}
+\end{align}
+%\end{subequations}
+%% Combining \eqref{eq:likelihood a} and \eqref{eq:likelihood b}, and
+%% recalling that $\data \in \{0,1\}$ yields:
+
+%% \begin{align}\label{eq:combined likelihood}
+%%   \begin{split}
+%%     \Pr(\data| \theta) &= \left [\spec\prod_{i=1}^N
+%%       (1-\sens)^{\theta_i} \right ]^{1-\data} \left [1 - \spec\prod_{i=1}^N (1-\sens)^{\theta_i} \right ]^{\data}.
+%%   \end{split}
+%% \end{align}
 
 \begin{figure}[H]
   \centering
@@ -265,48 +306,6 @@ this assumption. However, cross-reactivity was ruled out in
     result. A positive pooled test arises if any one of the above
     mentioned paths results in a detection.}\label{fig:likelihood}
 \end{figure}
-
-To summarize, we assume that for a single pool, a positive test result
-is generated in one of two paths. Either, SARS-CoV-2 RNA from an
-infected individual's sample is correctly amplified and detected, and
-this can happen for each positive sample in a pool, with probability
-$\Se$. Or, some erroneous amplification occurs (e.g. contaminant viral
-RNA is introduced), an event that occurs at most once per pool, with
-probability $1-\Sp$. Our model is illustrated in
-Figure~\ref{fig:likelihood} and summarized in
-%% A negative pooled test result occurs when all detection paths (both
-%% correct and erroneous) fail. The probability of no false-detection
-%% accounts for the $\spec$ term. The probability of no correct detection
-%% is $(1-\sens)$ per infected individual. The probability that all such
-%% paths fail is the product of the above mentioned terms, displayed in
-\eqref{eq:likelihood a}.%%  The probability of a positive result,
-%% presented in \eqref{eq:likelihood b}, is simply the complement.
-%% The probability of a negative pooled test result is presented in
-%% \eqref{eq:likelihood a} (along with its complement
-%% \eqref{eq:likelihood b}), and explained below.
-%\begin{subequations}
-\begin{align}%\label{eq:single likelihood}
-  %\begin{split}
-    \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N
-    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum_i\theta_i}. \label{eq:likelihood a}
-    %
-    %
-    %
-    %% \Pr(\data=1 | \theta) &= 1 - \spec\prod_{i=1}^N
-    %% (1-\sens)^{\theta_i} = 1 - \spec(1-\Se)^{\sum\theta_i} . \label{eq:likelihood b}
-  %\end{split}
-\end{align}
-%\end{subequations}
-%% Combining \eqref{eq:likelihood a} and \eqref{eq:likelihood b}, and
-%% recalling that $\data \in \{0,1\}$ yields:
-
-%% \begin{align}\label{eq:combined likelihood}
-%%   \begin{split}
-%%     \Pr(\data| \theta) &= \left [\spec\prod_{i=1}^N
-%%       (1-\sens)^{\theta_i} \right ]^{1-\data} \left [1 - \spec\prod_{i=1}^N (1-\sens)^{\theta_i} \right ]^{\data}.
-%%   \end{split}
-%% \end{align}
-
 
 %% \subsection{Scheme efficiency}
 %% The efficiency of Dorfman pooling scheme is the expected number of
@@ -376,7 +375,7 @@ Figure~\ref{fig:likelihood} and summarized in
 
 
 
-\subsection{Scheme false-negative rate}
+\subsection*{Scheme false-negative rate}
 We calculate the false-negative rate for a single \emph{infected}
 individual, henceforth referred to as "Donald" under our model and
 under the common assumption. We distinguish three types of
@@ -388,8 +387,7 @@ false-negative occurs when a pooled test containing Donald's sample
 to detect at least one positive result. Lastly, a \emph{scheme}
 false-negative occurs when an entire pooling scheme fails to identify
 Donald as infected. Our first task is to calculate Dorfman's scheme
-false-negative rate. Rephrasing, we wish to answer the following
-question: what is the probability of not identifying Donald as
+false-negative rate. Equivalently, what is the probability of not identifying Donald as
 infected under a Dorfman pooling scheme?
 
 Denote the prevalence of infection in the (tested) population $q$. We
@@ -417,7 +415,7 @@ assign Donald as individual $1$, so that $\theta_1=1$. Then:
     %
     %
     %
-    &= \Sp(1-\Se)(1-q\Se)^{N-1}, \text{ by Newton's Binomial Theorem.} \\
+    &= \Sp(1-\Se)(1-q\Se)^{N-1}. \\
   \end{split}
 \end{align}
 
@@ -439,7 +437,7 @@ result. Thus, the scheme's false-negative rate is:
     \end{split}
 \end{align}
 
-\subsubsection{Comparison metric}
+\subsubsection*{Comparison metric}
 The single test false-negative rate $1-\Se$ and scheme false-negative
 rate $\mi$ are compared via:
 \begin{equation}\label{eq:erel}
@@ -453,8 +451,8 @@ $1-\Se^2$. A short calculation shows that this approximation implies
 the percentage increase in scheme false-negative rate is just
 $\err{common} := 100\cdot \Se$.
 
-\section{Results}\label{section:results}
-\subsection{Scheme false-negative}
+\section*{Results}\label{section:results}
+\subsection*{Scheme false-negative}
 We plot $\err{exact}$ for varying prevalence $q$ and sensitivity $\Se$
 values, and make the comparison with $\err{common}$. As recommended by
 \cite{DorfmanYuvalDor}, we apply different pool sizes $N$, for
@@ -477,7 +475,7 @@ prevalence and the single test sensitivity (Figure \ref{fig1}, right
 panel).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=18cm]{heatmap_sfn.jpg}
+  \includegraphics[width=\textwidth]{heatmap_sfn.jpg}
   \caption{Relative increase in Dorfman pooling false-negative rates
     $\err{exact}$. Left: Colors represent $\err{exact}$, the relative
     percentage increase in the scheme false-negative rates relative
@@ -489,33 +487,8 @@ panel).
     \cite{DorfmanYuvalDor}.}\label{fig1}
 \end{figure}
 
-\subsection{Scheme efficiency}
-Our results suggest that the efficiency under the common assumption is
-always greater than the efficiency under our exact model. This should
-not come as a surprise, as the common assumption implies larger
-false-negative rates and, consequently, a lower number of tests being
-utilized. As can be expected, the discrepancy is largest for lower
-test sensitivity rates $\Se$.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=18cm]{heatmap_efficiency.jpg}
-  \caption{Relative increase in Dorfman pooling efficiency
-    $\eff{exact}$. Left: Colors represent $\eff{exact}$, the relative
-    percentage increase in the scheme false-negative rates relative
-    to the single test false-negative rates (eq
-    \eqref{eq:erel}). Right: colors represent the difference between
-    $\eff{common}$ and $\eff{exact}$. The disease prevalence $q$, is
-    varied on the x-axis, while the test sensitivity is varied on
-    the y-axis. Pool size $N$, was chosen according to $q$ as in
-    \cite{DorfmanYuvalDor}.}\label{fig2}
-\end{figure}
-
-
-
-\section{Discussion}
-
-\subsection{Short recap}
+\section*{Discussion}
+%\subsection{Short recap}
 We have presented a novel model for SARS-CoV-2 pooled tests. To the best of our knowledge, ours is the
 only one that is actually based on experimental data.
 
@@ -532,8 +505,7 @@ when prevalence is low, such circumstances are exactly those leading
 to a substantial increase in false-negative rates. Such behavior of
 pooling is not implied by the common assumption
 
-
-\subsection{Implications for group testing in different prevalence settings}
+%\subsection{Implications for group testing in different prevalence settings}
 Our results have practical implications for the use of pooling
 schemes. As the COVID-19 pandemic progresses, the infection prevalence
 in various tested populations undergoes frequent changes. Hence, as
@@ -548,14 +520,14 @@ One important consequence of the efficiency charts is that
 practitioners order RT-PCR reagents, they should expect \emph{lower}
 scheme efficiency, and thus order more reagents.
 
-\subsection{Limitations}
+%\subsection{Limitations}
 Lacking large amounts of experimental data, it is hard to assess the
 validity of our model. The data in \cite{Salazar} does allow us to
 reject the common assumption but not much more. Our model is as simple
 as possible, given that the standard assumptions are refuted and
 dilution effects are not taken into consideration.
 
-\subsection{Ways to reduce errors}
+%\subsection{Ways to reduce errors}
 Although our application focused on Dorfman pooling, our analysis
 applies to other pooling schemes. Pooling schemes
 (e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
@@ -578,7 +550,7 @@ holds great promise is DOPE \cite{DOPE}. This scheme utilizes
 considerably less RT-PCR tests and has lower error rates than many
 competing schemes.
 
-\subsection{Conclusion}
+%\subsection{Conclusion}
 We have no doubt that further study of the assumptions underlying
 pooling is due. Furthermore, adapting common group testing algorithms
 \cite{Kim} to novel error models should be further studied.
@@ -618,9 +590,7 @@ efficiency. These are analyzed via a common assumption that we refute.
 The implications of refuting the common assumption were presented and
 should be considered by practitioners.
 
-
-%\bibliographystyle{amsplain}
-\bibliographystyle{ama}
+\bibliographystyle{amsplain}
 \bibliography{refs}
 
 \end{document}
