@@ -308,71 +308,71 @@ Figure~\ref{fig:likelihood} and summarized in
 %% \end{align}
 
 
-\subsection{Scheme efficiency}
-The efficiency of Dorfman pooling scheme is the expected number of
-tests utilized. Let $T$ the number of tests. Then:
-\begin{align}
-  \begin{split}
-    \mathbb{E}[T] &= 1 + N\Pr(\data=1)\\
-    %
-    %
-    %
-    &= 1 + N\sum_{\theta} \Pr(\theta) \Pr(\data=1|\theta) \\
-    %
-    %
-    %
-    &= 1 + N\sum_{k=0}^N \Pr(\sum \theta_i = k) \Pr(\data=1|\sum \theta_i = k) \\
-    %
-    %
-    %
-    &= 1 + N\sum_{k=0}^N \binom{N}{k}q^k(1-q)^k (1-\Sp(1-\Se)^k) \\
-    %
-    %
-    %
-    &= 1+N - N\Sp\sum_{k=0}^N \binom{N}{k}q^k(1-q)^k (1-\Se)^k \\
-    %
-    %
-    %
-    %&= 1+N - N\Sp \sum_{k=0}^N \binom{N}{k}(q-q\Se)^k(1-q)^k \\
-    %
-    %
-    %
-    &= 1+N - N\Sp (1-q\Se)^N\\    
-  \end{split}
-\end{align}
+%% \subsection{Scheme efficiency}
+%% The efficiency of Dorfman pooling scheme is the expected number of
+%% tests utilized. Let $T$ the number of tests. Then:
+%% \begin{align}
+%%   \begin{split}
+%%     \mathbb{E}[T] &= 1 + N\Pr(\data=1)\\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\sum_{\theta} \Pr(\theta) \Pr(\data=1|\theta) \\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\sum_{k=0}^N \Pr(\sum \theta_i = k) \Pr(\data=1|\sum \theta_i = k) \\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\sum_{k=0}^N \binom{N}{k}q^k(1-q)^k (1-\Sp(1-\Se)^k) \\
+%%     %
+%%     %
+%%     %
+%%     &= 1+N - N\Sp\sum_{k=0}^N \binom{N}{k}q^k(1-q)^k (1-\Se)^k \\
+%%     %
+%%     %
+%%     %
+%%     %&= 1+N - N\Sp \sum_{k=0}^N \binom{N}{k}(q-q\Se)^k(1-q)^k \\
+%%     %
+%%     %
+%%     %
+%%     &= 1+N - N\Sp (1-q\Se)^N\\    
+%%   \end{split}
+%% \end{align}
 
-Compare to the common assumption:
+%% Compare to the common assumption:
 
-\begin{align}
-  \begin{split}
-    \mathbb{E}[T] &= 1 + N\Pr(\data=1)\\
-    %
-    %
-    %
-    &= 1 + N\sum_{\theta} \Pr(\theta) \Pr(\data=1|\theta) \\
-    %
-    %
-    %
-    &= 1 + N\Big[\Pr(\theta_i = 0,\ \forall i)(1-\Sp) + \Pr(\exists i\ \theta_i =1)\Se\Big] \\
-    %
-    %
-    %
-    &= 1 + N\Big [(1-q)^N(1-\Sp) + (1-(1-q)^N)\Se \Big ] \\
-    %
-    %
-    %
-    &= 1 + N\Big [(1-q)^N(1-\Sp - \Se) + \Se \Big ] \\
-    %
-    %
-    %
-    &= 1 + \Se N + N(1-q)^N(1-\Sp - \Se).
-  \end{split}
-\end{align}
+%% \begin{align}
+%%   \begin{split}
+%%     \mathbb{E}[T] &= 1 + N\Pr(\data=1)\\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\sum_{\theta} \Pr(\theta) \Pr(\data=1|\theta) \\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\Big[\Pr(\theta_i = 0,\ \forall i)(1-\Sp) + \Pr(\exists i\ \theta_i =1)\Se\Big] \\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\Big [(1-q)^N(1-\Sp) + (1-(1-q)^N)\Se \Big ] \\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + N\Big [(1-q)^N(1-\Sp - \Se) + \Se \Big ] \\
+%%     %
+%%     %
+%%     %
+%%     &= 1 + \Se N + N(1-q)^N(1-\Sp - \Se).
+%%   \end{split}
+%% \end{align}
 
-The difference is:
-\begin{equation}
-  \mathbb{E}^{\text{exact}}[T] - \mathbb{E}^{\text{common}}[T] = N \Big [1 - \Sp(1-q\Se)^N - \Se - (1-q)^N(1-\Sp - \Se) \Big ]
-\end{equation}
+%% The difference is:
+%% \begin{equation}
+%%   \mathbb{E}^{\text{exact}}[T] - \mathbb{E}^{\text{common}}[T] = N \Big [1 - \Sp(1-q\Se)^N - \Se - (1-q)^N(1-\Sp - \Se) \Big ]
+%% \end{equation}
 
 
 
