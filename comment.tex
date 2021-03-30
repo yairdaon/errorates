@@ -274,37 +274,35 @@ Figure~\ref{fig:likelihood} and summarized in
   \begin{tikzpicture}
     \begin{scope}[every node/.style={circle,thick,draw}]
       \node[shape=circle,draw=black] (A) at (0,0) {$\theta_1=1$};
-      \node[shape=circle,draw=black] (B) at (2,0) {$\theta_2=0$};
-      \node[shape=circle,draw=black] (D) at (4,0) {$\theta_3=0$};
-      \node[shape=circle,draw=black] (E) at (6,0) {$\theta_4=1$};
+      \node[shape=circle,draw=black] (B) at (3,0) {$\theta_2=1$};
+      \node[shape=circle,draw=black] (D) at (6,0) {$\theta_3=0$};
+      %\node[shape=circle,draw=black] (E) at (6,0) {$\theta_4=1$};
 
-      \node[shape=ellipse,draw=black]
-      (F) at (9,0) {False-positive};
+      \node[shape=ellipse,draw=black] (F) at (8,5) {False-positive};
       
-      \node[shape=rectangle,draw=black] (G) at (4,7)
+      \node[shape=rectangle,draw=black] (G) at (1.5,5)
            {$\Pr(\data=0|\theta)=(1-\sens)^2\spec$};
     \end{scope}
 
     \begin{scope}[>={Stealth[black]},
         every node/.style={fill=white},
-        every edge/.style={draw=red,very thick}]
-      \path [->] (A) edge node {$1-\sens$} (4.5,6.6);
+        every edge/.style={draw=black,very thick}]
+      \path [->] (A) edge node {$1-\sens$} (2,4.6);
       %\path [->] (B) edge node {$0$} (G);
       %\path [->] (D) edge node {$0$} (G);
-      \path [->] (E) edge node {$1-\sens$} (4.5,6.6);
-      \path [->] (F) edge node {$\spec$} (5.5,6.6); 
+      \path [->] (B) edge node {$1-\sens$} (2.5,4.6);
+        \path [->] (F) edge node {$\spec$} (3.7,5); 
     \end{scope}
   \end{tikzpicture}
   \caption{Illustration of our model. A pool contains individuals
-    $\{1,2,3,4\}$ with state $\theta=(1,0,0,1)$ (i.e. individuals 1
-    and 4 are infected). A negative pooled test ($\data=0$) implies
-    that three detection paths failed. A false-negative occurred for
-    $1$ and $4$, each with probability $(1-\sens)$ for
-    each. Additionally, no erroneous detection of SARS-CoV-2 occurred,
-    with probability $\spec$. Individuals $2$ and $3$ are not infected
-    and do not contribute to the probability of the pooled test
-    result. A positive pooled test arises if any one of the above
-    mentioned paths results in a detection.}\label{fig:likelihood}
+    $\{1,2,3\}$ with state $\theta=(1,1,0)$ (i.e., individuals 1
+    and 2 are infected). A negative pooled test ($\data=0$) occurs when
+    three detection paths fail: A false-negative occurs for individuals
+    $1$ and $2$, each with probability $(1-\sens)$.
+    Additionally, no false-positive detection of SARS-CoV-2 occurs,
+    with probability $\spec$. Individual $3$ is not infected
+    and does not contribute to the probability of the pooled test
+    result. The pooled test is positive if any path results in a detection.}\label{fig:likelihood}
 \end{figure}
 
 %% \subsection{Scheme efficiency}
@@ -489,31 +487,29 @@ panel).
 
 \section*{Discussion}
 %\subsection{Short recap}
-We have presented a novel model for SARS-CoV-2 pooled tests. To the best of our knowledge, ours is the
-only one that is actually based on experimental data.
-
-we have shown that low values of infection prevalence, or
-low values of single test false-negative rates, increase
+Here, we presented a novel probabilistic model for the outcomes of pooled PCR tests, parametrized for SARS-CoV-2. Contrary to previous models, we assume, based on data (see section XX), that multiple infected individuals increase the chance of a positive pool.
+A direct consequence of our model is that  false-negative rates depend on infection prevalence. Specifically, low values of infection prevalence increase
 $\err{exact}$. These results remain qualitatively similar under varying
 parameter values, in the observed ranges
 \cite{KitComparison,EstimatingRatesKucrika, EstimatingRatesLourenco,
   InterpretingCOVID19Test} (Figure \ref{fig1}).
 
-Our results lead to a fact almost disregarded in
+Our results lead to a conflict: low infection prevalence leads to high efficiency of Dorfman pooling \cite{DorfmanYuvalDor}, while also increasing false-negative rates.
+
+fact almost disregarded in
 \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
-when prevalence is low, such circumstances are exactly those leading
+when infection prevalence is low, such circumstances are exactly those leading
 to a substantial increase in false-negative rates. Such behavior of
 pooling is not implied by the common assumption
 
 %\subsection{Implications for group testing in different prevalence settings}
-Our results have practical implications for the use of pooling
-schemes. As the COVID-19 pandemic progresses, the infection prevalence
+As the COVID-19 pandemic progresses, the infection prevalence
 in various tested populations undergoes frequent changes. Hence, as
-our results suggest, pooling strategies for mass testing should be
+our results suggest, pooling strategies employed for mass testing should be
 used with caution in populations where infection rates are low. Such
 mass-tested populations often include air travel passengers
 \cite{JTM,RobinHood}, potentially importing infections, or
-asymptomatic individuals, such as children, and can be crucial for
+presymptomatic and asymptomatic individuals, and can be crucial for
 controlling outbreaks \cite{MinaScience}.
 
 One important consequence of the efficiency charts is that
@@ -533,7 +529,7 @@ applies to other pooling schemes. Pooling schemes
 (e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
 positive pooled results to correctly identify Donald as
 infected. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
-If the first pool yields a positive result, it is split in two. Then
+If the first pool yields a positive result, it is split in two; otherwise, everyone are declared negative. Then
 the splitting is repeated until resulting pools are negative or
 individuals are tested separately. With an initial pool size of 32,
 Donald will necessarily have to test positive in pools of size 32, 16,
@@ -545,10 +541,7 @@ pooling scheme of \cite{Lion, Kim} will necessarily yield more
 false-negatives than Dorfman pooling --- there are additional places
 for it to fail.
 
-Thus, finding better pooling schemes is imperative. One scheme that
-holds great promise is DOPE \cite{DOPE}. This scheme utilizes
-considerably less RT-PCR tests and has lower error rates than many
-competing schemes.
+Thus, finding improved pooling schemes is imperative. An especially important consideration in designing such schemes is explicitly taking the intrinsic PCR error rates into account. We (ref), as well as others (ref), have developed such models, although their implementation in real-world settings has not yet commenced. 
 
 %\subsection{Conclusion}
 We have no doubt that further study of the assumptions underlying
@@ -571,24 +564,21 @@ pooling is due. Furthermore, adapting common group testing algorithms
 %% \cite{DorfmanYuvalDor}.
 
 
-As mentioned in \cite{DorfmanYuvalDor}, introducing a positive
+Another important factor in pooling is dependence between samples. As mentioned in \cite{DorfmanYuvalDor}, introducing a positive
 dependence within a pool decreases the false-positive rate. In the
 extreme case, consider a fully connected pool, where one infection
-implies the entire pool is infected. In this case, a calculation
-analogous to the one conducted above recovers the initial
+determines the entire pool is infected. In this case, a calculation
+analogous to the one conducted above (section??) recovers the initial
 false-negative rate $1-\Se$. Interestingly, pooling was also noted to
 have increased throughput when infection probabilities are dependent
 between the pooled individuals \cite{DorfmanYuvalDor}, providing
 another advantage to sampling dependent individuals in pooling
-schemes.
+schemes. Hence, deliberately pooling individuals with positive dependence of infection should be further studied and likely encouraged when performing pooling.
 
 
-To conclude, pooling is an important technique which can improve
+To conclude, pooling is an important technique that can improve
 testing throughput in a cost-effective manner. Nevertheless, care must
-be given to pooling schemes' false-negative rates and
-efficiency. These are analyzed via a common assumption that we refute.
-The implications of refuting the common assumption were presented and
-should be considered by practitioners.
+be given to pooling schemes' false-negative rates, especially under low infection prevalence settings. 
 
 \bibliographystyle{amsplain}
 \bibliography{refs}
