@@ -39,7 +39,7 @@ under Dorfman pooling increase when the prevalence of infection
 decreases. However, low infection prevalence is exactly the condition
 when Dorfman pooling achieves highest throughput efficiency. We
 therefore implore the cautious use of pooling and development of
-pooling strategies that consider the tests' error rates.
+pooling schemes that consider the correct tests' error rates.
 \end{abstract}
 \newpage
 
@@ -63,19 +63,20 @@ its error rates thoroguhly investigated \cite{Kim, Simplistic1,
 
 Studies focused on pooling for SARS-CoV-2 are in a consensus that
 sample dilution effects \cite{DilutionHIV, GroupDilution} are not a
-concern for pools as large as 64 individuals \cite{PoolSize30, Lion,
-  DorfmanYuvalDor, DilutionCOVID}. Consequently, studies assumed that
-the probability of a true-positive (the test's \emph{sensitivity})
-does not depend on the number of infected samples in the pool, but
-rather on the existence of at least one such sample. Thus, the
-probability of a positive result in a pooled test has been (assumed)
-identical for a pool with one sample from an infected individual and,
-e.g., five such samples. This assumption is common in the group
-testing literature \cite{Kim, OptimalDorfmanPool}, as well as in more
-specific, COVID-19 focused studies \cite{Simplistic1, Simplistic2}. In
-this study we challenge these commonly made assumptions and show how
-using a more accurate probabilistic model affects estimation of
-false-negative rates for Dorfman pooling.
+concern, even for pools as large as 64 individuals \cite{PoolSize30,
+  Lion, DorfmanYuvalDor, DilutionCOVID}. Consequently, studies assumed
+that the probability of a true-positive (the test's
+\emph{sensitivity}) does not depend on the number of infected samples
+in the pool, but rather on the existence of at least one such
+sample. Thus, the probability of a positive result in a pooled test
+has been (assumed) identical for a pool with one sample from an
+infected individual and, e.g., five such samples. This assumption is
+common in the group testing literature \cite{Kim, OptimalDorfmanPool},
+as well as in more specific, COVID-19 focused studies
+\cite{Simplistic1, Simplistic2}. In this study we challenge this
+commonly made assumption and show how using a more accurate
+probabilistic model affects estimation of false-negative rates for
+Dorfman pooling.
 
 \section*{Methods}
 Formally, we consider a pool containing $N$ individuals
@@ -87,15 +88,16 @@ test result (data) is denoted $\data \in \{0,1\}$, where $\data=0$ iff
 the test returned a negative result.
 
 \subsection*{The common assumption}\label{subsec:common}
-Previous studies of group testing strategies assumed that the
-false-negative probability does not depend on the number of infected
-samples, but merely on the existence of at least one such sample in a
-pool \cite{Kim, OptimalDorfmanPool}. Current studies of pooling in the
-context of SARS-CoV-2 also employ similar assumptions
-\cite{Simplistic1, Simplistic2}. Specifically, these studies assume
-that the probability of a negative result is the same for a pool with
-a single sample coming from an infected individual and several
- samples from infected individuals. Explicitly:
+Previous studies of pooling schemes assumed that the false-negative
+probability does not depend on the number of infected samples, but
+merely on the existence of at least one such sample in a pool
+\cite{Kim, OptimalDorfmanPool}. Current studies of pooling in the
+context of SARS-CoV-2 also employ a similar assumption
+\cite{Simplistic1, Simplistic2}. %% Specifically, these studies assume
+%% that the probability of a negative result is the same for a pool with
+%% a single sample coming from an infected individual and several samples
+%% from infected individuals. 
+Explicitly, these studies assume:
 
 \begin{align}\label{eq:common}
   \Pr(\data=0|\theta) = 
@@ -148,24 +150,25 @@ assumption.
 Since the essence of the refuted common assumption is that
 amplification of all samples occurs only once, we assume the opposite:
 amplification of viral RNA succeeds or fails for each sample
-independently. According to \cite{Simplistic1, Simplistic2, Kim,
-  OptimalDorfmanPool}, a false-positive does not
-depend on the number of negative samples in a pool. We incorporate
-this assumption in our model with a small modification: We assume that
-an erroneous amplification can occur in \emph{any} pool. Specifically,
-it is possible that correct amplifications fails and an erroneous one
-occurs simultaneously. This assumption is somewhat specific for the
-current application of screening for SARS-CoV-2 via RT-PCR. For
-example, cross-reactivity with other coronaviruses would have violated
-this assumption. However, cross-reactivity was ruled out in
-\cite{KitComparison}. These assumptions lead to our model, which is illustrated in 
-Figure~\ref{fig:likelihood} and summarized in
-\eqref{eq:likelihood a}.
-\begin{align}
-    \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N
-    (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum_i\theta_i}. \label{eq:likelihood a}
+independently. Furthermore, according to \cite{Simplistic1,
+  Simplistic2, Kim, OptimalDorfmanPool}, a false-positive does not
+depend on the number of negative samples in a pool either. Following
+our previous reasoning, we incorporate this assumption in our model
+with a small modification: We assume that a false-positive also occurs
+indpendently of other amplifications. This means a false-positive can
+occur in \emph{any} pool. Specifically, it is possible that every
+correct amplifications fails and an erroneous one occurs
+simultaneously. This assumption is somewhat specific for the current
+application of screening for SARS-CoV-2 via RT-PCR. For example,
+cross-reactivity with other coronaviruses would have violated this
+assumption. However, cross-reactivity was ruled out in
+\cite{KitComparison}. These assumptions lead to our model, which is
+illustrated in Figure~\ref{fig:likelihood} and summarized in
+\eqref{eq:likelihood}.
+\begin{align}\label{eq:likelihood}
+    \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N (1-\sens)^{\theta_i} =
+    \spec(1-\Se)^{\sum_i\theta_i}.
 \end{align}
-
 
 \begin{figure}[H]
   \centering
@@ -198,15 +201,15 @@ Figure~\ref{fig:likelihood} and summarized in
     are infected). A negative pooled test ($\data=0$) occurs when
     three detection paths fail: A false-negative occurs for
     individuals $1$ and $2$, each with probability $(1-\sens)$.
-    Additionally, no false-positive detection of SARS-CoV-2 occurs,
-    with probability $\spec$. Individual $3$ is not infected and does
-    not contribute to the probability of the pooled test result.}\label{fig:likelihood}
+    Additionally, no false-positive detection occurs, with probability
+    $\spec$. Individual $3$ is not infected and does not contribute to
+    the probability of the pooled test result.}\label{fig:likelihood}
 \end{figure}
 
 
-\subsection*{Scheme false-negative rate}
+\subsection*{Application: scheme false-negative rate}
 We calculate the false-negative rate for a single \emph{infected}
-individual, henceforth referred to as "Donald" under our model and
+individual, henceforth referred to as "Donald", under our model and
 under the common assumption. We distinguish three types of
 false-negative events when performing pooling. A \emph{single test}'s
 false-negative is the event of a negative result upon testing Donald
@@ -214,13 +217,13 @@ separately, i.e., in an RT-PCR test without pooling. A \emph{pooled}
 false-negative occurs when a pooled test containing Donald's sample
 (and other samples) yields a negative result, i.e., the pooling fails
 to detect at least one positive result. Lastly, a \emph{scheme}
-false-negative occurs when an entire pooling scheme fails to
-identify Donald as infected. Our first task is to calculate Dorfman's
-scheme false-negative rate. Equivalently, what is the probability of
+false-negative occurs when an entire pooling scheme fails to identify
+Donald as infected. Our first task is to calculate Dorfman's scheme
+false-negative rate. Equivalently, we ask: what is the probability of
 not identifying Donald as infected under Dorfman pooling?
 
 Denote the prevalence of infection in the (tested) population $q$. We
-assign Donald as individual $1$, so that $\theta_1=1$. Then:
+denote Donald as individual $1$, so that $\theta_1=1$. Then:
 
 \begin{align}
   \begin{split}
@@ -260,7 +263,7 @@ as infected, both pooled and separate tests have to yield a positive
 result. Thus, the scheme's false-negative rate is:
 \begin{align}\label{eq:sfn}
     \begin{split}
-        \mi :&= 1 - \Se\Pr(\data=1|\theta=1)\\
+        \mi :&= 1 - \Se\Pr(\data=1|\theta_1=1)\\
         %
         &= 1 - \Se\left [1 - \Sp(1-\Se)(1-q\Se))^{N-1}\right].
     \end{split}
@@ -276,9 +279,9 @@ $\err{exact}$ is the percentage increase in the pooling scheme
 false-negative rate, relative to the single test false-negative rate.
 
 According to the common assumption, the scheme false-negative rate is
-$1-\Se^2$. A short calculation shows that this approximation implies
-the percentage increase in scheme false-negative rate is $\err{common}
-:= 100\cdot \Se$.
+$1-\Se^2$. A short calculation shows that this implies the percentage
+increase in scheme false-negative rate is $\err{common} := 100\cdot
+\Se$.
 
 \section*{Results}\label{section:results}
 \subsection*{Scheme false-negative}
@@ -333,7 +336,7 @@ increasing false-negative rates.
 
 As the COVID-19 pandemic progresses, the infection prevalence
 in various tested populations undergoes frequent changes. Hence, as
-our results suggest, pooling strategies employed for mass testing should be
+our results suggest, pooling schemes employed for mass testing should be
 used with caution in populations where infection rates are low. Such
 mass-tested populations often include air travel passengers
 \cite{JTM,RobinHood}, potentially importing infections, or
