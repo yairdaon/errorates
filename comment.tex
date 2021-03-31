@@ -17,25 +17,29 @@
 \affil[3]{The Gertner Institute for Epidemiology and Health Policy
   Research, Tel Hashomer, Israel}
 \affil[*]{Equal contribution}
-%\email{yair.daon@gmail.com}
 \date{}
 
 \maketitle
 
 \begin{abstract}
-Pooling is a method of simultaneously testing multiple samples for the presence of pathogens. Pooling of RT-PCR tests of SARS-CoV-2 is increasing in popularity, due to its high testing
-throughput. A popular pooling scheme is Dorfman pooling: test $N$
-individuals simultaneously. If the test is positive, each individual
-is then tested separately; otherwise, all are declared negative. Most analyses of pooling scheme error rates
-assume that including more than a single infected sample in a pooled test does not increase the probability of a positive outcome. We challenge this assumption with
-experimental data and suggest a novel and parsimonious probabilistic
-model for the outcomes of pooled tests. As an application, we analyze
-the false-negative rate (i.e., the probability of a negative result
-for an infected individual) of Dorfman pooling. We
-show that the false-negative rates under Dorfman pooling increase when
-the prevalence of infection decreases. However, low infection prevalence is exactly the condition when Dorfman pooling achieves highest throughput efficiency. We therefore implore the cautious use of pooling and development of pooling strategies that consider the tests' error rates. 
-%% This is an inherent problem of Dorfman pooling and should be kept in
-%% mind by practitioners and policy makers alike.
+Pooling is a method of simultaneously testing multiple samples for the
+presence of pathogens. Pooling of SARS-CoV-2 tests is increasing in
+popularity, due to its high testing throughput. A popular pooling
+scheme is Dorfman pooling: test $N$ individuals simultaneously. If the
+test is positive, each individual is then tested separately;
+otherwise, all are declared negative. Most analyses of pooling schemes
+error rates assume that including more than a single infected sample
+in a pooled test does not increase the probability of a positive
+outcome. We challenge this assumption with experimental data and
+suggest a novel and parsimonious probabilistic model for the outcomes
+of pooled tests. As an application, we analyze the false-negative rate
+(i.e., the probability of a negative result for an infected
+individual) of Dorfman pooling. We show that the false-negative rates
+under Dorfman pooling increase when the prevalence of infection
+decreases. However, low infection prevalence is exactly the condition
+when Dorfman pooling achieves highest throughput efficiency. We
+therefore implore the cautious use of pooling and development of
+pooling strategies that consider the tests' error rates.
 \end{abstract}
 \newpage
 
@@ -73,61 +77,7 @@ this study we challenge these commonly made assumptions and show how
 using a more accurate probabilistic model affects estimation of
 false-negative rates for Dorfman pooling.
 
-% \subsection{RT-PCR}\label{subsec:rtpcr}
-% We briefly explain the process of testing for SARS-CoV-2 by RT-PCR in
-% Section~\ref{subsec:rtpcr}. Our exposition intentionally avoids many
-% details, and a comprehensive review of RT-PCR can be found in
-% \cite{COVID-RTPCR, PCRBook}.
-
-% PCR is a process in which a targeted DNA strand's frequency is
-% amplified to create billions of copies in a reaction mixture. At the
-% end of this \emph{amplification} process, the presence of targeted DNA
-% molecules in a reaction mixture can be confidently
-% determined. Arguably, the best way to understand PCR is as a chain
-% reaction: Each targeted DNA molecule is copied into two, that are
-% copied into four and so forth. This cascade gives PCR its name:
-% polymerase chain reaction.
-
-% Specifically, the PCR process is comprised of cycles, with each cycle
-% doubling the abundance of the targeted DNA. In each cycle, each
-% double-strand DNA molecule is broken into two separate strands. An
-% enzyme called DNA polymerase generates a new double-strand DNA replica
-% from each separate strand. Replication cannot start without a specific
-% short DNA sequence, called a primer, that has to be introduced into
-% the reaction mixture. Introducing the right primer into the reaction
-% mixture ensures (almost) only the targeted DNA sequence is copied. A
-% protein is added to the reaction mixture, which emits light upon
-% successfully binding the targeted DNA. Once enough light is emitted
-% the tested reaction mixture is declared positive and a
-% \emph{detection} is said to occur. If, on the other hand, a predefined
-% number of cycles pass without a detection event then the reaction
-% mixture is declared negative.
-
-% Since the genetic material of SARS-CoV-2 is RNA rather than DNA, an
-% extra preprocessing step is required. An enzyme called reverse
-% transcriptase (hence the RT in RT-PCR) replicates existing RNA in the
-% reaction mixture into DNA. Once DNA replicas are made, the PCR process
-% proceeds as described above, targeting SARS-CoV-2 DNA replicas.
-
-%\subsection{Pooling}
-% One possible source of failed detection of SARS-CoV-2 RNA in pooled
-% RT-PCR testing (a \emph{false-negative}) is sample dilution. When
-% pooling, several samples are mixed, so the concentration of viral RNA
-% is reduced. This effect may cause a delay in amplification
-% \cite{DorfmanYuvalDor}, no detection and, consequently, a
-% false-negative. Another potential source for false-negatives is a
-% failed sampling process. 
-
-%% However, \cite{Lion} showed that this effect can be
-%% safely ignored when mixing up to 32 samples, which we correspondingly
-%% assume.
-
-
 \section*{Methods}
-% We define and present the \emph{common assumption} in Section~\ref{subsec:common}
-% and refute it in Section~\ref{subsec:refute}. Our model is presented
-% in Section~\ref{subsec:ours}.
-
 Formally, we consider a pool containing $N$ individuals
 $\{1,\dots,N\}$. We denote the true infection state $\theta \in
 \{0,1\}^N$, so individual $i$ is infected iff $\theta_i=1$. The RT-PCR
@@ -157,10 +107,6 @@ a single sample coming from an infected individual and several
 
 Below, we refer to \eqref{eq:common} as the \emph{common
   assumption}. 
-%% We refute the assumptions underlying \eqref{eq:common} in
-%% Section~\ref{subsec:ours} and suggest more plausible ones in
-%% Section~\ref{subsec:ours}.
-
 
 \subsection*{Refuting the common assumption}\label{subsec:refute}
 We refute the common assumption with experimental data collected from
@@ -212,48 +158,14 @@ occurs simultaneously. This assumption is somewhat specific for the
 current application of screening for SARS-CoV-2 via RT-PCR. For
 example, cross-reactivity with other coronaviruses would have violated
 this assumption. However, cross-reactivity was ruled out in
-\cite{KitComparison}.
-% To summarize, we assume that for a single pool, a positive test result
-% is generated in one of two paths. Either, SARS-CoV-2 RNA from an
-% infected individual's sample is correctly amplified and detected, and
-% this can happen for each positive sample in a pool, with probability
-% $\Se$. Or, some erroneous amplification occurs (e.g. contaminant viral
-% RNA is introduced), an event that occurs at most once per pool, with
-% probability $1-\Sp$.
-These assumptions lead to our model, which is illustrated in 
+\cite{KitComparison}. These assumptions lead to our model, which is illustrated in 
 Figure~\ref{fig:likelihood} and summarized in
-%% A negative pooled test result occurs when all detection paths (both
-%% correct and erroneous) fail. The probability of no false-detection
-%% accounts for the $\spec$ term. The probability of no correct detection
-%% is $(1-\sens)$ per infected individual. The probability that all such
-%% paths fail is the product of the above mentioned terms, displayed in
-\eqref{eq:likelihood a}.%%  The probability of a positive result,
-%% presented in \eqref{eq:likelihood b}, is simply the complement.
-%% The probability of a negative pooled test result is presented in
-%% \eqref{eq:likelihood a} (along with its complement
-%% \eqref{eq:likelihood b}), and explained below.
-%\begin{subequations}
-\begin{align}%\label{eq:single likelihood}
-  %\begin{split}
+\eqref{eq:likelihood a}.
+\begin{align}
     \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N
     (1-\sens)^{\theta_i} = \spec(1-\Se)^{\sum_i\theta_i}. \label{eq:likelihood a}
-    %
-    %
-    %
-    %% \Pr(\data=1 | \theta) &= 1 - \spec\prod_{i=1}^N
-    %% (1-\sens)^{\theta_i} = 1 - \spec(1-\Se)^{\sum\theta_i} . \label{eq:likelihood b}
-  %\end{split}
 \end{align}
-%\end{subequations}
-%% Combining \eqref{eq:likelihood a} and \eqref{eq:likelihood b}, and
-%% recalling that $\data \in \{0,1\}$ yields:
 
-%% \begin{align}\label{eq:combined likelihood}
-%%   \begin{split}
-%%     \Pr(\data| \theta) &= \left [\spec\prod_{i=1}^N
-%%       (1-\sens)^{\theta_i} \right ]^{1-\data} \left [1 - \spec\prod_{i=1}^N (1-\sens)^{\theta_i} \right ]^{\data}.
-%%   \end{split}
-%% \end{align}
 
 \begin{figure}[H]
   \centering
@@ -291,73 +203,6 @@ Figure~\ref{fig:likelihood} and summarized in
     not contribute to the probability of the pooled test result.}\label{fig:likelihood}
 \end{figure}
 
-%% \subsection{Scheme efficiency}
-%% The efficiency of Dorfman pooling scheme is the expected number of
-%% tests utilized. Let $T$ the number of tests. Then:
-%% \begin{align}
-%%   \begin{split}
-%%     \mathbb{E}[T] &= 1 + N\Pr(\data=1)\\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\sum_{\theta} \Pr(\theta) \Pr(\data=1|\theta) \\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\sum_{k=0}^N \Pr(\sum \theta_i = k) \Pr(\data=1|\sum \theta_i = k) \\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\sum_{k=0}^N \binom{N}{k}q^k(1-q)^k (1-\Sp(1-\Se)^k) \\
-%%     %
-%%     %
-%%     %
-%%     &= 1+N - N\Sp\sum_{k=0}^N \binom{N}{k}q^k(1-q)^k (1-\Se)^k \\
-%%     %
-%%     %
-%%     %
-%%     %&= 1+N - N\Sp \sum_{k=0}^N \binom{N}{k}(q-q\Se)^k(1-q)^k \\
-%%     %
-%%     %
-%%     %
-%%     &= 1+N - N\Sp (1-q\Se)^N\\    
-%%   \end{split}
-%% \end{align}
-
-%% Compare to the common assumption:
-
-%% \begin{align}
-%%   \begin{split}
-%%     \mathbb{E}[T] &= 1 + N\Pr(\data=1)\\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\sum_{\theta} \Pr(\theta) \Pr(\data=1|\theta) \\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\Big[\Pr(\theta_i = 0,\ \forall i)(1-\Sp) + \Pr(\exists i\ \theta_i =1)\Se\Big] \\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\Big [(1-q)^N(1-\Sp) + (1-(1-q)^N)\Se \Big ] \\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + N\Big [(1-q)^N(1-\Sp - \Se) + \Se \Big ] \\
-%%     %
-%%     %
-%%     %
-%%     &= 1 + \Se N + N(1-q)^N(1-\Sp - \Se).
-%%   \end{split}
-%% \end{align}
-
-%% The difference is:
-%% \begin{equation}
-%%   \mathbb{E}^{\text{exact}}[T] - \mathbb{E}^{\text{common}}[T] = N \Big [1 - \Sp(1-q\Se)^N - \Se - (1-q)^N(1-\Sp - \Se) \Big ]
-%% \end{equation}
-
-
 
 \subsection*{Scheme false-negative rate}
 We calculate the false-negative rate for a single \emph{infected}
@@ -369,10 +214,10 @@ separately, i.e., in an RT-PCR test without pooling. A \emph{pooled}
 false-negative occurs when a pooled test containing Donald's sample
 (and other samples) yields a negative result, i.e., the pooling fails
 to detect at least one positive result. Lastly, a \emph{scheme}
-false-negative occurs when an entire pooling scheme fails to identify
-Donald as infected. Our first task is to calculate Dorfman's scheme
-false-negative rate. Equivalently, what is the probability of not identifying Donald as
-infected under a Dorfman pooling scheme?
+false-negative occurs when an entire pooling scheme fails to
+identify Donald as infected. Our first task is to calculate Dorfman's
+scheme false-negative rate. Equivalently, what is the probability of
+not identifying Donald as infected under Dorfman pooling?
 
 Denote the prevalence of infection in the (tested) population $q$. We
 assign Donald as individual $1$, so that $\theta_1=1$. Then:
@@ -472,7 +317,6 @@ panel).
 \end{figure}
 
 \section*{Discussion}
-%\subsection{Short recap}
 Here, we presented a novel probabilistic model for the outcomes of
 pooled PCR tests, parametrized for SARS-CoV-2. Contrary to the common
 assumption, we assume, based on data (Table~\ref{table}), that multiple
@@ -487,13 +331,6 @@ Our results lead to a conflict: low infection prevalence leads to high
 efficiency of Dorfman pooling \cite{DorfmanYuvalDor}, while also
 increasing false-negative rates. 
 
-% This is a fact almost disregarded in
-% \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
-% when infection prevalence is low, such circumstances are exactly those
-% leading to a substantial increase in false-negative rates. Such
-% behavior of pooling is not implied by the common assumption.
-
-%\subsection{Implications for group testing in different prevalence settings}
 As the COVID-19 pandemic progresses, the infection prevalence
 in various tested populations undergoes frequent changes. Hence, as
 our results suggest, pooling strategies employed for mass testing should be
@@ -503,65 +340,29 @@ mass-tested populations often include air travel passengers
 presymptomatic and asymptomatic individuals, and can be crucial for
 controlling outbreaks \cite{MinaScience}.
 
-%\subsection{Limitations}
-%NONE
+%% Although our application focused on Dorfman pooling, our analysis
+%% applies to other pooling schemes. Pooling schemes
+%% (e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
+%% positive pooled results to correctly identify an infected individual as
+%% such. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
+%% If the first pool yields a positive result, it is split in two;
+%% otherwise, everyone are declared negative. Then the splitting is
+%% repeated until resulting pools are negative or individuals are tested
+%% separately. With an initial pool size of 32, Donald will necessarily
+%% have to test positive in pools of size 32, 16, 8, 4 and 2, as well as
+%% in a single test, for the scheme to correctly identify him as
+%% infected. Compare this to the Dorfman scheme that requires a positive
+%% test in a pool of size $N=8$, and an additional single positive test
+%% to identify Donald as infected. The hierarchical pooling scheme of
+%% \cite{Lion, Kim} will necessarily yield more false-negatives than
+%% Dorfman pooling --- there are additional places for it to fail.
 
-%\subsection{Ways to reduce errors}
-Although our application focused on Dorfman pooling, our analysis
-applies to other pooling schemes. Pooling schemes
-(e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
-positive pooled results to correctly identify an infected individual as
-such. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
-If the first pool yields a positive result, it is split in two;
-otherwise, everyone are declared negative. Then the splitting is
-repeated until resulting pools are negative or individuals are tested
-separately. With an initial pool size of 32, Donald will necessarily
-have to test positive in pools of size 32, 16, 8, 4 and 2, as well as
-in a single test, for the scheme to correctly identify him as
-infected. Compare this to the Dorfman scheme that requires a positive
-test in a pool of size $N=8$, and an additional single positive test
-to identify Donald as infected. The hierarchical pooling scheme of
-\cite{Lion, Kim} will necessarily yield more false-negatives than
-Dorfman pooling --- there are additional places for it to fail.
+Thus, improving pooling schemes is imperative. An especially important
+consideration in designing such schemes is explicitly taking the
+intrinsic PCR error rates into account. We \cite{DOPE}, as well as
+others \cite{BayesianDorfman}, have developed such models, although
+they have not yet been implemented in real-world settings.
 
-Thus, improving pooling schemes is imperative. An especially
-important consideration in designing such schemes is explicitly taking
-the intrinsic PCR error rates into account. We \cite{DOPE}, as well as
-others \cite{BayesianDorfman}, have developed such models, although they have not yet been implemented in real-world settings.
-
-%\subsection{Conclusion}
-
-
-%% For example, although Dorfman pooling improves testing throughput,
-
-%% The common assumption implies that one assumes that the probability of
-%% a false-negative is identical for the pooled and single
-%% tests. Although simplistic in nature, the common assumption does capture
-%% the intuition behind our results: For Donald to be considered negative
-%% under Dorfman pooling, he has to test negative twice. In addition to
-%% this approximation only being an upper bound \cite{Simplistic2}, it
-%% does not account for the effect of infection prevalence on the
-%% false-negative rates under Dorfman pooling. Supporting the importance
-%% of this effect, such an association between prevalence and the scheme
-%% false-negative rate under Dorfman pooling has been empirically noted
-%% \cite{DorfmanYuvalDor}.
-
-
-%% Another important factor in pooling is dependence between samples. As
-%% mentioned in \cite{DorfmanYuvalDor}, introducing a positive dependence
-%% within a pool decreases the false-positive rate. In the extreme case,
-%% consider a fully connected pool, where one infection determines the
-%% entire pool is infected. In this case, a calculation analogous to the
-%% one conducted above (section??) recovers the initial false-negative
-%% rate $1-\Se$. Interestingly, pooling was also noted to have increased
-%% throughput when infection probabilities are dependent between the
-%% pooled individuals \cite{DorfmanYuvalDor}, providing another advantage
-%% to sampling dependent individuals in pooling schemes. Hence,
-%% deliberately pooling individuals with positive dependence of infection
-%% should be further studied and likely encouraged when performing
-%% pooling.
-
-%% Conclusion
 To conclude, pooling is an important technique that can improve
 testing throughput in a cost-effective manner. Nevertheless, care must
 be given to pooling schemes' false-negative rates, especially under
