@@ -293,7 +293,7 @@ Figure~\ref{fig:likelihood} and summarized in
       %\path [->] (D) edge node {$0$} (G);
       \path [->] (B) edge node {$1-\sens$} (2.5,4.6);
       \path [->] (F) edge node {$\spec$} (3.7,5);
-      \path [-Bar] (D) edge (4.5, 2);
+      %\path [-Bar] (D) edge (4.5, 2);
     \end{scope}
   \end{tikzpicture}
   \caption{Illustration of our model. A pool contains individuals
@@ -303,9 +303,7 @@ Figure~\ref{fig:likelihood} and summarized in
     individuals $1$ and $2$, each with probability $(1-\sens)$.
     Additionally, no false-positive detection of SARS-CoV-2 occurs,
     with probability $\spec$. Individual $3$ is not infected and does
-    not contribute to the probability of the pooled test result. The
-    pooled test is positive ($\data=1$) if any path results in a
-    detection.}\label{fig:likelihood}
+    not contribute to the probability of the pooled test result.}\label{fig:likelihood}
 \end{figure}
 
 %% \subsection{Scheme efficiency}
@@ -492,7 +490,7 @@ panel).
 %\subsection{Short recap}
 Here, we presented a novel probabilistic model for the outcomes of
 pooled PCR tests, parametrized for SARS-CoV-2. Contrary to the common
-assumption, we assume, based on data (see section XX), that multiple
+assumption, we assume, based on data \cite{Salazar}, that multiple
 infected individuals increase the likelihood of a positive pooled test
 result. A direct consequence of our model is that false-negative rates
 depend on infection prevalence. Specifically, low values of infection
@@ -500,14 +498,15 @@ prevalence increase $\err{exact}$. These results remain qualitatively
 similar under varying parameter values, in the observed ranges
 \cite{KitComparison,EstimatingRatesKucrika, EstimatingRatesLourenco,
   InterpretingCOVID19Test} (Figure \ref{fig1}).
-
 Our results lead to a conflict: low infection prevalence leads to high
 efficiency of Dorfman pooling \cite{DorfmanYuvalDor}, while also
-increasing false-negative rates. This is a fact almost disregarded in
-\cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
-when infection prevalence is low, such circumstances are exactly those
-leading to a substantial increase in false-negative rates. Such
-behavior of pooling is not implied by the common assumption.
+increasing false-negative rates. 
+
+% This is a fact almost disregarded in
+% \cite{DorfmanYuvalDor}: although (Dorfman) pooling is most efficient
+% when infection prevalence is low, such circumstances are exactly those
+% leading to a substantial increase in false-negative rates. Such
+% behavior of pooling is not implied by the common assumption.
 
 %\subsection{Implications for group testing in different prevalence settings}
 As the COVID-19 pandemic progresses, the infection prevalence
@@ -519,23 +518,15 @@ mass-tested populations often include air travel passengers
 presymptomatic and asymptomatic individuals, and can be crucial for
 controlling outbreaks \cite{MinaScience}.
 
-%% One important consequence of the efficiency charts is that
-%% practitioners order RT-PCR reagents, they should expect \emph{lower}
-%% scheme efficiency, and thus order more reagents.
-
 %\subsection{Limitations}
-Lacking large amounts of experimental data, it is hard to assess the
-validity of our model. The data in \cite{Salazar} does allow us to
-reject the common assumption but not much more. Our model assumes as
-little as as possible, given that the standard assumptions are refuted
-and dilution effects are not taken into consideration.
+%NONE
 
 %\subsection{Ways to reduce errors}
 Although our application focused on Dorfman pooling, our analysis
 applies to other pooling schemes. Pooling schemes
 (e.g. \cite{MatrixPooling,Lion, Kim}), require some sequence of
-positive pooled results to correctly identify Donald as
-infected. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
+positive pooled results to correctly identify an infected individual as
+such. Consider the hierarchical pooling scheme \cite{Lion, Kim}:
 If the first pool yields a positive result, it is split in two;
 otherwise, everyone are declared negative. Then the splitting is
 repeated until resulting pools are negative or individuals are tested
@@ -550,14 +541,11 @@ Dorfman pooling --- there are additional places for it to fail.
 
 Thus, finding improved pooling schemes is imperative. An especially
 important consideration in designing such schemes is explicitly taking
-the intrinsic PCR error rates into account. We (ref), as well as
-others (ref), have developed such models, although their
+the intrinsic PCR error rates into account. We \cite{DOPE}, as well as
+others \cite{BayesianDorfman}, have developed such models, although their
 implementation in real-world settings has not yet commenced.
 
 %\subsection{Conclusion}
-We have no doubt that further study of the assumptions underlying
-pooling is due. Furthermore, adapting common group testing algorithms
-\cite{Kim} to novel error models should be further studied.
 
 
 %% For example, although Dorfman pooling improves testing throughput,
@@ -589,11 +577,11 @@ pooling is due. Furthermore, adapting common group testing algorithms
 %% should be further studied and likely encouraged when performing
 %% pooling.
 
-
-%% To conclude, pooling is an important technique that can improve
-%% testing throughput in a cost-effective manner. Nevertheless, care must
-%% be given to pooling schemes' false-negative rates, especially under
-%% low infection prevalence settings.
+%% Conclusion
+To conclude, pooling is an important technique that can improve
+testing throughput in a cost-effective manner. Nevertheless, care must
+be given to pooling schemes' false-negative rates, especially under
+low infection prevalence settings.
 
 \bibliographystyle{amsplain}
 \bibliography{refs}
