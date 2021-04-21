@@ -27,19 +27,20 @@ presence of pathogens. Pooling of SARS-CoV-2 tests is increasing in
 popularity, due to its high testing throughput. A popular pooling
 scheme is Dorfman pooling: test $N$ individuals simultaneously, if the
 test is positive, each individual is then tested separately;
-otherwise, all are declared negative. Most analyses of the error rates of pooling schemes
-assume that including more than a single infected sample
-in a pooled test does not increase the probability of a positive
-outcome. We challenge this assumption with experimental data and
-suggest a novel and parsimonious probabilistic model for the outcomes
-of pooled tests. As an application, we analyze the false-negative rate
-(i.e., the probability of a negative result for an infected
-individual) of Dorfman pooling. We show that the false-negative rates
-under Dorfman pooling increase when the prevalence of infection
-decreases. However, low infection prevalence is exactly the condition
-when Dorfman pooling achieves highest throughput efficiency. We
-therefore implore the cautious use of pooling and development of
-pooling schemes that consider correctly accounting for tests' error rates.
+otherwise, all are declared negative. Most analyses of the error rates
+of pooling schemes assume that including more than a single infected
+sample in a pooled test does not increase the probability of a
+positive outcome. We challenge this assumption with experimental data
+and suggest a novel and parsimonious probabilistic model for the
+outcomes of pooled tests. As an application, we analyze the
+false-negative rate (i.e., the probability of a negative result for an
+infected individual) of Dorfman pooling. We show that the
+false-negative rates under Dorfman pooling increase when the
+prevalence of infection decreases. However, low infection prevalence
+is exactly the condition when Dorfman pooling achieves highest
+throughput efficiency. We therefore implore the cautious use of
+pooling and development of pooling schemes that consider correctly
+accounting for tests' error rates.
 \end{abstract}
 \newpage
 
@@ -142,21 +143,24 @@ assumption.
 \caption{Contingency table of data from \cite{Salazar}}\label{table}
 \end{table}
 
+
 \subsection*{Our model}\label{subsec:ours}
 Since the essence of the refuted common assumption is that
 amplification of all samples occurs only once, we assume the opposite:
 amplification of viral RNA succeeds or fails for each sample
 independently. Furthermore, according to \cite{Simplistic1,
   Simplistic2, Kim, OptimalDorfmanPool}, a false-positive does not
-depend on the number of negative samples in a pool either. For lack of data pointing otherwise, we incorporate this assumption into our model
-with a small modification. We do assume that a false amplification can occur only once per pool. However, we also assume
-false amplification is independent of any other correct amplification. Specifically, it is possible that every
-correct amplification fails \emph{and} an erroneous one occurs
-simultaneously. This assumption is somewhat specific for the current
-application of screening for SARS-CoV-2 via RT-PCR. For example,
-cross-reactivity with other coronaviruses would have violated this
-assumption. However, cross-reactivity was ruled out in
-\cite{KitComparison}. These assumptions lead to our model, which is
+depend on the number of negative samples in a pool either. For lack of
+data pointing otherwise, we incorporate this assumption into our model
+with a small modification. We do assume that a false amplification can
+occur only once per pool. However, we also assume false amplification
+is independent of any other correct amplification. Specifically, it is
+possible that every correct amplification fails \emph{and} an
+erroneous one occurs simultaneously. This assumption is somewhat
+specific for the current application of screening for SARS-CoV-2 via
+RT-PCR. For example, cross-reactivity with other coronaviruses would
+have violated this assumption. However, cross-reactivity was ruled out
+in \cite{KitComparison}. These assumptions lead to our model, which is
 illustrated in Figure~\ref{fig:likelihood} and summarized in
 \eqref{eq:likelihood}.
 \begin{align}\label{eq:likelihood}
@@ -277,6 +281,10 @@ $1-\Se^2$. A short calculation shows that this implies the percentage
 increase in scheme false-negative rate is $\err{common} := 100\cdot
 \Se$.
 
+\subsection*{Code Availability}
+Code for this manuscript is available at
+\url{https://github.com/yairdaon/errorates}.
+
 \section*{Results}\label{section:results}
 \subsection*{Scheme false-negative}
 We plot $\err{exact}$ for varying prevalence $q$ and sensitivity $\Se$
@@ -346,6 +354,11 @@ To conclude, pooling is an important technique that can improve
 testing throughput in a cost-effective manner. Nevertheless, care must
 be given to pooling schemes' false-negative rates, especially under
 low infection prevalence settings.
+
+\section*{Acknowledgements}
+Yair Daon was supported by a post-doctoral fellowship from the Tel
+Aviv University Center for Combating Pandemics and the Raymond and Beverly
+Sackler dean's post-doctoral fellowship.
 
 \bibliographystyle{amsplain}
 \bibliography{refs}
