@@ -78,7 +78,7 @@ common in the group testing literature \cite{Kim, OptimalDorfmanPool},
 as well as in more specific, COVID-19 focused studies
 \cite{Simplistic1, Simplistic2}. In this study we challenge this
 commonly made assumption and show how using a more accurate
-probabilistic model, which affects the estimation of false-negative
+probabilistic model affects the estimation of false-negative
 rates for Dorfman pooling.
 
 Several consequences arise from our analysis. Estimation of optimal
@@ -342,13 +342,11 @@ model for the outcomes of pooled PCR tests, parametrized for
 SARS-CoV-2. Contrary to the common assumption, we assume, based on
 data (Table~\ref{table}), that multiple infected individuals increase
 the likelihood of a positive pooled test result. A direct consequence
-of our model is that false-negative rates depend on infection
-prevalence. A further consequence is that low values of infection
-prevalence increase the false-negative rates of Dorfman pooling. These
-results remain qualitatively similar under varying parameter values,
+of our model is that low values of infection
+prevalence increase the false-negative rates of Dorfman pooling. Importantly, our results remain qualitatively similar under varying parameter values,
 in the observed ranges \cite{KitComparison,EstimatingRatesKucrika,
   EstimatingRatesLourenco, InterpretingCOVID19Test} (Figure
-\ref{fig1}). Our results give rise to a conflict: low infection
+\ref{fig1}). Therefore, our results give rise to a conflict: low infection
 prevalence leads to high efficiency of Dorfman pooling
 \cite{DorfmanYuvalDor}, while also increasing false-negative rates.
 
@@ -360,17 +358,9 @@ mass-tested populations often include air travel passengers \cite{JTM}
 or presymptomatic and asymptomatic individuals \cite{RobinHood}, and
 can be crucial for controlling outbreaks \cite{MinaScience}.
 
-Thus, improving pooling schemes is imperative. An especially important
-consideration in designing such schemes is explicitly taking the
-intrinsic PCR error rates into account. As we have demonstrated above,
-analyzing expected error rates of a given scheme, given some error
-model is relatively straightforward. Designing a pooling scheme
-tailored for a specific error model is, however, far from trivial. In
-a recent study \cite{DOPE}, we have developed a novel pooling scheme
-that takes advantage of this specific error model. Our new pooling
-scheme shows great promise in terms of both accuracy, as well as
-efficiency, although it has not yet been implemented in real-world
-settings.
+Furthermore, an especially important
+consideration in designing pooling schemes is explicitly taking the
+intrinsic PCR error rates into account. As we have demonstrated above, analyzing the expected error rates of pooling schemes under a realistic probabilistic error model is readily achievable. Designing pooling schemes which optimize testing while accounting for error rates is, however, far from trivial. Nonetheless, various algorithms explicitly incorporate error rates into their pooling optimization processes (REFS), including a recent study by our group which employed the herein described error model \cite{DOPE}. 
 
 To conclude, pooling is an important technique that can increase
 testing throughput in a cost-effective manner. Nevertheless, care must
