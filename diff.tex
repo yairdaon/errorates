@@ -1,5 +1,45 @@
 \documentclass{article}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL old_paper.tex   Thu Sep  9 11:58:14 2021
+%DIF ADD paper.tex       Thu Sep  9 12:29:42 2021
 \input{definitions}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \title{An Accurate Model for SARS-CoV-2 Pooled RT-PCR Test Errors}
@@ -48,21 +88,19 @@ accounting for tests' error rates.
 Reverse transcription polymerase chain reaction (RT-PCR) testing is a
 key component in breaking transmission chains and mitigating the
 COVID-19 pandemic. As such, the need for large-scale testing has
-resulted in the application of techniques to increase the throughput
+resulted in the development of techniques to increase the \DIFdelbegin \DIFdel{the
+}\DIFdelend throughput
 of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30, BayesianDorfman,
   MatrixPooling, LionDorfman}. These techniques, often termed
-\emph{pooling}, or group testing, have originated in the 1940's in the
-seminal work of Dorfman and his pooling technique
-\cite{DorfmanOriginal, DorfmanYuvalDor}. Under Dorfman pooling, one
-selects $N$ individuals and performs a single RT-PCR test on their
-combined (\emph{pooled}) samples. If the pooled test yields a positive
-result, then each individual is retested separately; otherwise,
-everyone is declared negative. The throughput efficiency of Dorfman
-pooling has been demonstrated empirically \cite{DorfmanYuvalDor} and
-its error rates thoroguhly investigated \cite{Kim, Simplistic1,
-  OptimalDorfmanPool}. Other commonly used techniques include
-recursive pooling, wherein... Matrix pooling.. many other complex
-techniques..
+\emph{pooling}, or group testing, have originated in the seminal work
+of Dorfman and his pooling technique \cite{DorfmanOriginal,
+  DorfmanYuvalDor}. Under Dorfman pooling, one selects $N$ individuals
+and performs a single RT-PCR test on their combined (\emph{pooled})
+samples. If the pooled test yields a positive result, then each
+individual is retested separately; otherwise, everyone is declared
+negative. The throughput efficiency of Dorfman pooling has been
+demonstrated empirically \cite{DorfmanYuvalDor} and its error rates
+\DIFdelbegin \DIFdel{thoroguhly }\DIFdelend \DIFaddbegin \DIFadd{thoroughly }\DIFaddend investigated \cite{Kim, Simplistic1, OptimalDorfmanPool}.
 
 Studies focused on pooling for SARS-CoV-2 are in a consensus that
 sample dilution effects \cite{DilutionHIV, GroupDilution} are not a
@@ -78,17 +116,24 @@ common in the group testing literature \cite{Kim, OptimalDorfmanPool},
 as well as in more specific, COVID-19 focused studies
 \cite{Simplistic1, Simplistic2}. In this study we challenge this
 commonly made assumption and show how using a more accurate
-probabilistic model, which affects the estimation of false-negative
-rates for Dorfman pooling.
+probabilistic model affects estimation of false-negative rates for
+Dorfman pooling.
 
-Several consequences arise from our analysis. Estimation of optimal
+\DIFaddbegin \DIFadd{Several consequences arise from our analysis. Estimation of optimal
 pool size (for Dorfman pooling), which relies on previously made
-asumptions should be revisited \cite{OptimalDorfmanPool}. The error
+asumptions should be revisited \mbox{%DIFAUXCMD
+\cite{OptimalDorfmanPool}}\hspace{0pt}%DIFAUXCMD
+. The error
 rates of any pooling scheme in use should be reesetimated
-\cite{BayesianDorfman, Kim}. And, finally, new methods should be
-developed in order to take advantage of our novel model \cite{DOPE}.
+\mbox{%DIFAUXCMD
+\cite{BayesianDorfman, Kim}}\hspace{0pt}%DIFAUXCMD
+. And, finally, new methods should be
+developed in order to take advantage of our novel model \mbox{%DIFAUXCMD
+\cite{DOPE}}\hspace{0pt}%DIFAUXCMD
+.
+}
 
-\section*{Methods}
+\DIFaddend \section*{Methods}
 Formally, we consider a pool containing $N$ individuals
 $\{1,\dots,N\}$. We denote the true infection state $\theta \in
 \{0,1\}^N$, so individual $i$ is infected iff $\theta_i=1$. The RT-PCR
@@ -113,7 +158,7 @@ context of SARS-CoV-2 also employ a similar assumption
   \end{cases} 
 \end{align}
 
-Below, we refer to equation \eqref{eq:common} as the \emph{common
+Below, we refer to \DIFaddbegin \DIFadd{equation }\DIFaddend \eqref{eq:common} as the \emph{common
   assumption}. 
 
 \subsection*{Refuting the common assumption}\label{subsec:refute}
@@ -171,7 +216,7 @@ RT-PCR. For example, cross-reactivity with other coronaviruses would
 have violated this assumption. However, cross-reactivity was ruled out
 in \cite{KitComparison}. These assumptions lead to our model, which is
 illustrated in Figure~\ref{fig:likelihood} and summarized in
-equation \eqref{eq:likelihood}.
+\DIFaddbegin \DIFadd{equation }\DIFaddend \eqref{eq:likelihood}.
 \begin{align}\label{eq:likelihood}
     \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N (1-\sens)^{\theta_i} =
     \spec(1-\Se)^{\sum_i\theta_i}.
@@ -187,7 +232,7 @@ equation \eqref{eq:likelihood}.
       %\node[shape=circle,draw=black] (E) at (6,0) {$\theta_4=1$};
 
       \node[shape=ellipse,draw=black] (F) at (8,5) {False-positive};
-      
+
       \node[shape=rectangle,draw=black] (G) at (1.5,5)
            {$\Pr(\data=0|\theta)=(1-\sens)^2\spec$};
     \end{scope}
@@ -234,7 +279,30 @@ Denote the prevalence of infection in the (tested) population $q$. We
 denote Donald as individual $1$, so that $\theta_1=1$. Then:
 
 \begin{align}
-  \begin{split}
+  \DIFdelbegin %DIFDELCMD < \begin{split}
+%DIFDELCMD <     \Pr(\data=0|\theta_1=1) &= \sum_{\theta_2,\dots,\theta_N}
+%DIFDELCMD <     \Pr(\theta_2,\dots,\theta_N)
+%DIFDELCMD <     \Pr(\data=0|\theta_1=1,\theta_2,\dots,\theta_N) \\
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     &= \sum_{k=0}^{N-1}\Pr(\sum_{i=2}^N\theta_i=k)
+%DIFDELCMD <     \Pr(\data=0|\theta_1=1,\sum_{i=2}^N\theta_i = k)\\
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     &= \sum_{k=0}^{N-1}\binom{N-1}{k}q^k(1-q)^{N-1-k} \Sp(1-\Se)^{1+k}\\
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     &= \Sp(1-\Se) \sum_{k=0}^{N-1}\binom{N-1}{k}
+%DIFDELCMD <     \left(q(1-\Se)\right)^k(1-q)^{N-1-k}\\
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     %
+%DIFDELCMD <     &= \Sp(1-\Se)(1-q\Se)^{N-1}. \\
+%DIFDELCMD <   \end{split}%%%
+\DIFdelend \DIFaddbegin \begin{split}
     \Pr(\data=0|\theta_1=1) &= \sum_{\theta_2,\dots,\theta_N}
     \Pr(\theta_2,\dots,\theta_N)
     \Pr(\data=0|\theta_1=1,\theta_2,\dots,\theta_N) \\
@@ -256,7 +324,7 @@ denote Donald as individual $1$, so that $\theta_1=1$. Then:
     %
     %
     &= \Sp(1-\Se)(1-q\Se)^{N-1}. \\
-  \end{split}
+  \end{split}\DIFaddend 
 \end{align}
 
 If the pooled test yields a positive result, Donald is tested
@@ -282,15 +350,17 @@ positive result. Thus, the scheme's false-negative rate is:
 The single test false-negative rate $1-\Se$ and scheme false-negative
 rate $\mi$ are compared via:
 \begin{equation}\label{eq:erel}
-\err{exact} := \frac{\mi - (1-\Se)}{1-\Se} \cdot 100\%.
-\end{equation}
+\err{exact} := \frac{\mi - (1-\Se)}{1-\Se} \cdot \DIFdelbegin \DIFdel{100.
+}\DIFdelend \DIFaddbegin \DIFadd{100\%.
+}\DIFaddend \end{equation}
 $\err{exact}$ is the percentage increase in the pooling scheme
 false-negative rate, relative to the single test false-negative rate.
 
 According to the common assumption, the scheme false-negative rate is
 $1-\Se^2$. A straight forward calculation shows that this implies the
-percentage increase in scheme false-negative rate is $\err{common} :=
-100\%\cdot \Se$.
+percentage increase in scheme false-negative rate is \DIFdelbegin \DIFdel{$\err{common} :=
+100\cdot \Se$}\DIFdelend \DIFaddbegin \DIFadd{$\err{common} :=
+100\%\cdot \Se$}\DIFaddend .
 
 \subsection*{Code Availability}
 Code for this manuscript is available at
@@ -305,13 +375,13 @@ different prevalence values. We observe that for a false-positive rate
 $\Sp=0.95$ \cite{DorfmanYuvalDor} and a range of reasonable
 sensitivity and prevalence values \cite{KitComparison,
   InterpretingCOVID19Test, EstimatingRatesLourenco,
-  FalsePositiveEstimate}, the increase in scheme false-negative rate
-(compared to $1-\Se$), summarized in $\err{exact}$, is at leaset
-$60\%$ (Figure \ref{fig1}).
+  FalsePositiveEstimate}, \DIFdelbegin \DIFdel{an increase of at least $60\%$ }\DIFdelend \DIFaddbegin \DIFadd{the increase in scheme false-negative rate
+(compared to $1-\Se$), summarized }\DIFaddend in $\err{exact}$\DIFdelbegin \DIFdel{can be expected }\DIFdelend \DIFaddbegin \DIFadd{, is at leaset
+$60\%$ }\DIFaddend (Figure \ref{fig1}).
 
 Interestingly, an increase in infection prevalence monotonically
 decreases the scheme false-negative rate, as can also be easily seen
-from equation \eqref{eq:sfn}. For the chosen parameter ranges, the increase in
+from \DIFaddbegin \DIFadd{equation }\DIFaddend \eqref{eq:sfn}. For the chosen parameter ranges, the increase in
 the single test false-negative rates increases the relative error
 $\err{exact}$. These effects can be seen in Figure~\ref{fig1} (left
 panel), upon conditioning on pool size. Extending the range for $\Sp$
@@ -325,7 +395,7 @@ panel).
   \caption{Relative increase in Dorfman pooling false-negative rates
     $\err{exact}$. Left: Colors represent $\err{exact}$, the relative
     percentage increase in the scheme false-negative rates relative to
-    the single test false-negative rates equation \eqref{eq:erel}. Right:
+    the single test false-negative rates \DIFaddbeginFL \DIFaddFL{equation }\DIFaddendFL \eqref{eq:erel}. Right:
     colors represent the difference between $\err{common}$ and
     $\err{exact}$. The disease prevalence $q$, is varied on the
     x-axis, while the test sensitivity is varied on the y-axis. Pool
@@ -337,13 +407,13 @@ panel).
 \end{figure}
 
 \section*{Discussion}
-In this study, we developed a more realistic and novel probabilistic
+\DIFdelbegin \DIFdel{Here}\DIFdelend \DIFaddbegin \DIFadd{In this study}\DIFaddend , we developed a more realistic and novel probabilistic
 model for the outcomes of pooled PCR tests, parametrized for
 SARS-CoV-2. Contrary to the common assumption, we assume, based on
 data (Table~\ref{table}), that multiple infected individuals increase
 the likelihood of a positive pooled test result. A direct consequence
 of our model is that false-negative rates depend on infection
-prevalence. A further consequence is that low values of infection
+prevalence. \DIFdelbegin \DIFdel{Specifically, }\DIFdelend \DIFaddbegin \DIFadd{A further consequence is that }\DIFaddend low values of infection
 prevalence increase the false-negative rates of Dorfman pooling. These
 results remain qualitatively similar under varying parameter values,
 in the observed ranges \cite{KitComparison,EstimatingRatesKucrika,
@@ -362,14 +432,20 @@ can be crucial for controlling outbreaks \cite{MinaScience}.
 
 Thus, improving pooling schemes is imperative. An especially important
 consideration in designing such schemes is explicitly taking the
-intrinsic PCR error rates into account. As we have demonstrated above,
+intrinsic PCR error rates into account. \DIFdelbegin \DIFdel{We \mbox{%DIFAUXCMD
+\cite{DOPE}}\hspace{0pt}%DIFAUXCMD
+, }\DIFdelend \DIFaddbegin \DIFadd{As we have demonstrated above,
 analyzing expected error rates of a given scheme, given some error
 model is relatively straightforward. Designing a pooling scheme
 tailored for a specific error model is, however, far from trivial. In
-a recent study \cite{DOPE}, we have developed a novel pooling scheme
+a recent study \mbox{%DIFAUXCMD
+\cite{DOPE}}\hspace{0pt}%DIFAUXCMD
+, we have developed a novel pooling scheme
 that takes advantage of this specific error model. Our new pooling
-scheme shows great promise in terms of both accuracy, as well as
-efficiency, although it has not yet been implemented in real-world
+scheme shows great promise in terms of both accuracy, }\DIFaddend as well as
+\DIFdelbegin \DIFdel{others \mbox{%DIFAUXCMD
+\cite{BayesianDorfman}}\hspace{0pt}%DIFAUXCMD
+, have developed such models, although they have }\DIFdelend \DIFaddbegin \DIFadd{efficiency, although it has }\DIFaddend not yet been implemented in real-world
 settings.
 
 To conclude, pooling is an important technique that can increase
