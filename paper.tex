@@ -368,19 +368,19 @@ or presymptomatic and asymptomatic individuals \cite{RobinHood}, and
 can be crucial for controlling outbreaks \cite{MinaScience}.
 
 Furthermore, an especially important consideration in designing
-pooling schemes is explicitly taking the intrinsic PCR error rates
+pooling schemes is explicitly taking the intrinsic RT-PCR error rates
 into account. As we have demonstrated above, analyzing the expected
-error rates of pooling schemes under a realistic probabilistic error
+error rates of pooling schemes under a realistic error
 model is readily achievable. Designing pooling schemes which optimize
-testing while accounting for error rates is, however, far from
-trivial. Nonetheless, various algorithms explicitly incorporate error
-rates into their pooling optimization processes (REFS), including a
+testing while accounting for error rates is, however, considerably more involved.
+Nonetheless, various algorithms explicitly incorporate error
+rates into their pooling optimization processes \cite{BayesianDorfman, Kim, OptimalDorfmanPool}, including a
 recent study by our group which employed the herein described error
 model \cite{DOPE}.  In our proposed algorithm, we have used a Bayesian
 experimental design criterion to create an algorithm which iteratively
-performs pooling schemes, updating its information based on previous
+performs pooling, updating its information based on previous
 results. In doing so, our pooling scheme shows potential in terms of
-both reducing false-negative rates, as well as increasing efficiency,
+both reducing false-negative and false-positive rates, as well as increasing efficiency,
 although it has not yet been implemented in real-world settings.
 
 To conclude, pooling is an important technique that can increase
