@@ -1,5 +1,4 @@
-# Code and Tex files for "An Accurate Model for SARS-CoV-2 Pooled
- RT-PCR Test Errors"
+# Code and Tex files for "An Accurate Model for SARS-CoV-2 Pooled RT-PCR Test Errors"
 
 All code can be found in the iPython notebook file comment.ipynb. It
 runs out-of-the-box, assuming some common packages are installed
