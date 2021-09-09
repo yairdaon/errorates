@@ -14,9 +14,12 @@
 \affil[2]{Porter School of the Environment and Earth Sciences, The
   Faculty of Exact Sciences, Tel Aviv University\\ Tel Aviv, Israel}
 
-\affil[3]{The Biostatistics and Biomathematics Unit, The
-Gertner Institute for Epidemiology and Health Policy Research, Sheba Medical Center, Tel Hashomer, 52621 Ramat Gan, Israel}
+\affil[3]{The Biostatistics and Biomathematics Unit, The Gertner
+  Institute for Epidemiology and Health Policy Research, Sheba Medical
+  Center, Tel Hashomer, 52621 Ramat Gan, Israel}
+
 \affil[*]{Equal contribution}
+
 \date{}
 
 \maketitle
@@ -50,9 +53,9 @@ key component in breaking transmission chains and mitigating the
 COVID-19 pandemic. As such, the need for large-scale testing has
 resulted in the application of techniques to increase the throughput
 of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30, BayesianDorfman,
-  MatrixPooling, LionDorfman}. These techniques, often termed
-\emph{pooling}, or group testing, have originated in the 1940's in the
-seminal work of Dorfman and his pooling technique
+  MatrixPooling, LionDorfman, CherifReview}. These techniques, often
+termed \emph{pooling}, or group testing, have originated in the 1940's
+in the seminal work of Dorfman and his pooling technique
 \cite{DorfmanOriginal, DorfmanYuvalDor}. Under Dorfman pooling, one
 selects $N$ individuals and performs a single RT-PCR test on their
 combined (\emph{pooled}) samples. If the pooled test yields a positive
@@ -61,25 +64,30 @@ everyone is declared negative. The throughput efficiency of Dorfman
 pooling has been demonstrated empirically \cite{DorfmanYuvalDor} and
 its error rates thoroguhly investigated \cite{Kim, Simplistic1,
   OptimalDorfmanPool}. Other commonly used techniques include
-recursive pooling, wherein... Matrix pooling.. many other complex
-techniques..
+\emph{recursive} pooling \cite{Kim,RecursiveSevenFold}, wherein if the
+first pooled test is positive, the pool is split into two and the
+process repeats. Otherwise, all pool members are declared negative.
+In \emph{Matrix} pooling \cite{MatrixPooling} a population of size
+$N=mn$ is arranged in a matrix of dimensions $m\times n$ matrix. Each
+row and column are then pooled and individuals in the intersection of
+positive rows and columns are tested separately.
 
 Studies focused on pooling for SARS-CoV-2 are in a consensus that
 sample dilution effects \cite{DilutionHIV, GroupDilution} are not a
 concern, even for pools as large as 64 individuals \cite{PoolSize30,
-  Lion, DorfmanYuvalDor, DilutionCOVID}. Consequently, studies assumed
-that the probability of a true-positive (the test's
+  Lion, DorfmanYuvalDor, DilutionCOVID, CherifReview}. Consequently,
+studies assumed that the probability of a true-positive (the test's
 \emph{sensitivity}) does not depend on the number of infected samples
 in the pool, but rather on the existence of at least one such
 sample. Thus, the probability of a positive result in a pooled test
 has been (assumed) identical for a pool with one sample from an
 infected individual and, e.g., five such samples. This assumption is
-common in the group testing literature \cite{Kim, OptimalDorfmanPool},
-as well as in more specific, COVID-19 focused studies
+common in the group testing literature \cite{Kim, OptimalDorfmanPool,
+  CherifReview}, as well as in more specific, COVID-19 focused studies
 \cite{Simplistic1, Simplistic2}. In this study we challenge this
 commonly made assumption and show how using a more accurate
-probabilistic model, which affects the estimation of false-negative
-rates for Dorfman pooling.
+probabilistic model affects the estimation of false-negative rates for
+Dorfman pooling.
 
 Several consequences arise from our analysis. Estimation of optimal
 pool size (for Dorfman pooling), which relies on previously made
