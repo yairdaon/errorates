@@ -62,15 +62,20 @@ combined (\emph{pooled}) samples. If the pooled test yields a positive
 result, then each individual is retested separately; otherwise,
 everyone is declared negative. The throughput efficiency of Dorfman
 pooling has been demonstrated empirically \cite{DorfmanYuvalDor} and
-its error rates thoroguhly investigated \cite{Kim, Simplistic1,
-  OptimalDorfmanPool}. Other commonly used techniques include
-\emph{recursive} pooling \cite{Kim,RecursiveSevenFold}, wherein if the
+its error rates thoroughly investigated \cite{Kim, Simplistic1,
+  OptimalDorfmanPool}. 
+  
+The study and practice of pooling has advanced considerably since Dorfman's original paper, with 
+several other pooling techniques being applied for SARS-CoV-2.
+For example, in \emph{recursive} pooling \cite{Kim,RecursiveSevenFold}, if the
 first pooled test is positive, the pool is split into two and the
 process repeats. Otherwise, all pool members are declared negative.
 In \emph{Matrix} pooling \cite{MatrixPooling} a population of size
-$N=mn$ is arranged in a matrix of dimensions $m\times n$ matrix. Each
+$N=mn$ is arranged in a matrix of dimensions $m\times n$. Each
 row and column are then pooled and individuals in the intersection of
-positive rows and columns are tested separately.
+positive rows and columns are tested separately. Other, more sophisticated
+pooling schemes exist \cite{CompressedPooling}, but studies investigating the 
+underlying assumptions of pooling are surprisingly lacking.
 
 Studies focused on pooling for SARS-CoV-2 are in a consensus that
 sample dilution effects \cite{DilutionHIV, GroupDilution} are not a
@@ -89,10 +94,9 @@ commonly made assumption and show how using a more accurate
 probabilistic model affects the estimation of false-negative rates for
 Dorfman pooling.
 
-Several consequences arise from our analysis. Estimation of optimal
-pool size (for Dorfman pooling), which relies on previously made
-asumptions should be revisited \cite{OptimalDorfmanPool}. The error
-rates of any pooling scheme in use should be reesetimated
+Several consequences arise from our analysis: Previously estimated optimal Dorfman
+pool size should be revisited, as it is influenced by the prevalence \cite{OptimalDorfmanPool}. The error
+rates of many pooling schemes in use should be reesetimated
 \cite{BayesianDorfman, Kim}. And, finally, new methods should be
 developed in order to take advantage of our novel model \cite{DOPE}.
 
@@ -346,7 +350,7 @@ panel).
 
 \section*{Discussion}
 In this study, we developed a more realistic and novel probabilistic
-model for the outcomes of pooled PCR tests, parametrized for
+model for the outcomes of pooled RT-PCR tests, parametrized for
 SARS-CoV-2. Contrary to the common assumption, we assume, based on
 data (Table~\ref{table}), that multiple infected individuals increase
 the likelihood of a positive pooled test result. A direct consequence
@@ -374,9 +378,9 @@ error rates of pooling schemes under a realistic error
 model is readily achievable. Designing pooling schemes which optimize
 testing while accounting for error rates is, however, considerably more involved.
 Nonetheless, various algorithms explicitly incorporate error
-rates into their pooling optimization processes \cite{BayesianDorfman, Kim, OptimalDorfmanPool}, including a
+rates into their pooling optimization processes \cite{Kim, OptimalDorfmanPool}, including a
 recent study by our group which employed the herein described error
-model \cite{DOPE}.  In our proposed algorithm, we have used a Bayesian
+model \cite{DOPE}.  In our proposed algorithm, we have used an
 experimental design criterion to create an algorithm which iteratively
 performs pooling, updating its information based on previous
 results. In doing so, our pooling scheme shows potential in terms of
