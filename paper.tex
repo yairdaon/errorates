@@ -49,14 +49,21 @@ accounting for tests' error rates.
 
 \section*{Introduction}
 Reverse transcription polymerase chain reaction (RT-PCR) testing is a
-key component in the fight against the COVID-19 pandemic. RT-PCR testing can be performed on individuals suspected of infection and hence break potential transmission chains. Moreover, in some countries, RT-PCR testing has become a routine procedure of surveillance, testing incoming air passengers in airports \cite{PoolingAirports, TestingAirportsJapan}, schools students \cite{PoolSchool}, or even the entire adult population \cite{MassPooling}. 
+key component in the fight against the COVID-19 pandemic. RT-PCR
+testing can be performed on individuals suspected of infection and
+hence break potential transmission chains. Moreover, in some
+countries, RT-PCR testing has become a routine procedure of
+surveillance, testing incoming air passengers in airports
+\cite{PoolingAirports, TestingAirportsJapan}, schools students
+\cite{PoolSchool}, or even the entire adult population
+\cite{MassPooling}.
 
-As such, the need for large-scale testing has
-resulted in the application of techniques to increase the throughput
-of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30, BayesianDorfman,
-  MatrixPooling, LionDorfman, CherifReview}. These techniques, often
-termed \emph{pooling}, or group testing, have originated in the 1940's
-in the seminal work of Dorfman and his pooling technique
+As such, the need for large-scale testing has resulted in the
+application of techniques to increase the throughput of RT-PCR tests
+\cite{DorfmanYuvalDor, PoolSize30, BayesianDorfman, MatrixPooling,
+  LionDorfman, CherifReview}. These techniques, often termed
+\emph{pooling}, or group testing, have originated in the 1940's in the
+seminal work of Dorfman and his pooling technique
 \cite{DorfmanOriginal, DorfmanYuvalDor}. Under Dorfman pooling, one
 selects $N$ individuals and performs a single RT-PCR test on their
 combined (\emph{pooled}) samples. If the pooled test yields a positive
@@ -64,17 +71,19 @@ result, then each individual is retested separately; otherwise,
 everyone is declared negative. The throughput efficiency of Dorfman
 pooling has been demonstrated empirically \cite{DorfmanYuvalDor} and
 its error rates thoroughly investigated \cite{Kim, Simplistic1,
-  OptimalDorfmanPool}. 
+  OptimalDorfmanPool}.
   
-The study and practice of pooling has advanced considerably since Dorfman's original paper, with several other pooling techniques being applied for SARS-CoV-2.
-For example, in \emph{recursive} pooling \cite{Kim,RecursiveSevenFold}, if the
-first pooled test is positive, the pool is split into two and the splitting
-process repeats. Otherwise, all pool members are declared negative.
-In \emph{Matrix} pooling \cite{MatrixPooling} a population of size
-$N=mn$ is arranged in a matrix of dimensions $m\times n$. Each
-row and column are then pooled and individuals in the intersection of
-positive rows and columns are tested separately. Other, more sophisticated
-pooling schemes exist \cite{CompressedPooling}, but studies investigating the 
+The study and practice of pooling has advanced considerably since
+Dorfman's original paper, with several other pooling techniques being
+applied for SARS-CoV-2.  For example, in \emph{recursive} pooling
+\cite{Kim,RecursiveSevenFold}, if the first pooled test is positive,
+the pool is split into two and the splitting process
+repeats. Otherwise, all pool members are declared negative.  In
+\emph{Matrix} pooling \cite{MatrixPooling} a population of size $N=mn$
+is arranged in a matrix of dimensions $m\times n$. Each row and column
+are then pooled and individuals in the intersection of positive rows
+and columns are tested separately. Other, more sophisticated pooling
+schemes exist \cite{CompressedPooling}, but studies investigating the
 underlying assumptions of pooling are surprisingly lacking.
 
 Studies focused on pooling for SARS-CoV-2 are in a consensus that
@@ -88,16 +97,26 @@ sample. Thus, the probability of a positive result in a pooled test
 has been (assumed) identical for a pool with one sample from an
 infected individual and, e.g., five such samples. This assumption is
 common in the group testing literature \cite{Kim, OptimalDorfmanPool,
-  CherifReview}, as well as in more specific, SARS-CoV-2 focused studies
-\cite{Simplistic1, Simplistic2}. In this study we challenge this
-commonly made assumption and demostrate how using a more accurate
+  CherifReview}, as well as in more specific, SARS-CoV-2 focused
+studies \cite{Simplistic1, Simplistic2}. In this study we challenge
+this commonly made assumption and demonstrate how using a more accurate
 probabilistic model affects the estimation of false-negative rates for
 Dorfman pooling.
 
-Several consequences arise from our analysis: Previously estimated optimal Dorfman
-pool size \cite{OptimalDorfmanPool} should be revisited in the case of SARS-CoV-2, as it is influenced by the prevalence of infection. The error
-rates of other pooling schemes in use should also be reesetimated
-\cite{BayesianDorfman, Kim}. Another consequence of our results is that studies that seek precise error models should be conducted for other pathogens as well, since the standard error model could prove flawed for other pathogens. Specifically, all assumptions should be scrutinized, including (e.g.) the independence of tests, an extremely widespread assumption in the group testing literature \cite{Kim, OptimalDorfmanPool} which dates back to Dorfman's original paper \cite{DorfmanOriginal}. Finally, new methods should be developed in order to take advantage of our (and other) more realistic models.
+Several consequences arise from our analysis: Previously estimated
+optimal Dorfman pool size \cite{OptimalDorfmanPool} should be
+revisited in the case of SARS-CoV-2, as it is influenced by the
+prevalence of infection. The error rates of other pooling schemes in
+use should also be revisited \cite{BayesianDorfman, Kim}. Another
+consequence of our results is that studies that seek precise error
+models should be conducted for other pathogens as well, since the
+standard error model could prove flawed for other
+pathogens. Specifically, all assumptions should be scrutinized,
+including (e.g.) the independence of tests, an extremely widespread
+assumption in the group testing literature \cite{Kim,
+  OptimalDorfmanPool} which dates back to Dorfman's original paper
+\cite{DorfmanOriginal}. Finally, new methods should be developed in
+order to take advantage of our (and other) more realistic models.
 
 \section*{Methods}
 Formally, we consider a pool containing $N$ individuals
@@ -181,8 +200,8 @@ specific for the current application of screening for SARS-CoV-2 via
 RT-PCR. For example, cross-reactivity with other coronaviruses would
 have violated this assumption. However, cross-reactivity was ruled out
 in \cite{KitComparison}. These assumptions lead to our model, which is
-illustrated in Figure~\ref{fig:likelihood} and summarized in
-equation \eqref{eq:likelihood}.
+illustrated in Figure~\ref{fig:likelihood} and summarized in equation
+\eqref{eq:likelihood}.
 \begin{align}\label{eq:likelihood}
     \Pr(\data=0 | \theta) &= \spec\prod_{i=1}^N (1-\sens)^{\theta_i} =
     \spec(1-\Se)^{\sum_i\theta_i}.
@@ -349,7 +368,7 @@ panel).
 
 \section*{Discussion}
 In this study, we developed a more realistic and novel probabilistic
-model for the outcomes of pooled RT-PCR tests, parametrized for
+model for the outcomes of pooled RT-PCR tests, parameterized for
 SARS-CoV-2. Contrary to the common assumption, we assume, based on
 data (Table~\ref{table}), that multiple infected individuals increase
 the likelihood of a positive pooled test result. A direct consequence
@@ -371,20 +390,21 @@ or presymptomatic and asymptomatic individuals \cite{RobinHood}, and
 can be crucial for controlling outbreaks \cite{MinaScience}.
 
 Furthermore, an especially important consideration in designing
-pooling schemes is explicitly taking into account the intrinsic RT-PCR error rates
-. As we have demonstrated above, analyzing the expected
-error rates of pooling schemes under a realistic error
-model is readily achievable. Designing pooling schemes that optimize
-testing while accounting for error rates is, however, considerably more involved.
-Nonetheless, various algorithms explicitly incorporate error
-rates into their pooling optimization processes \cite{Kim, OptimalDorfmanPool}, including a
-recent study by our group which employed the herein described error
-model \cite{DOPE}.  In our proposed algorithm, we have used an
-experimental design criterion to create an algorithm which iteratively
-performs pooling, updating its information based on previous
-results. In doing so, our pooling scheme shows potential in terms of
-both reducing false-negative and false-positive rates, as well as increasing efficiency,
-although it has not yet been implemented in real-world settings.
+pooling schemes is explicitly taking into account the intrinsic RT-PCR
+error rates . As we have demonstrated above, analyzing the expected
+error rates of pooling schemes under a realistic error model is
+readily achievable. Designing pooling schemes that optimize testing
+while accounting for error rates is, however, considerably more
+involved.  Nonetheless, various algorithms explicitly incorporate
+error rates into their pooling optimization processes \cite{Kim,
+  OptimalDorfmanPool}, including a recent study by our group which
+employed the herein described error model \cite{DOPE}.  In our
+proposed algorithm, we have used an experimental design criterion to
+create an algorithm which iteratively performs pooling, updating its
+information based on previous results. In doing so, our pooling scheme
+shows potential in terms of both reducing false-negative and
+false-positive rates, as well as increasing efficiency, although it
+has not yet been implemented in real-world settings.
 
 To conclude, pooling is an important technique that can increase
 testing throughput in a cost-effective manner. Nevertheless, care must
