@@ -49,7 +49,8 @@ accounting for tests' error rates.
 
 \section*{Introduction}
 Reverse transcription polymerase chain reaction (RT-PCR) testing is a
-key component in the fight against the COVID-19 pandemic. PCR testing can be performed on individuals suspected of infection and hence break potential transmission chains. Moreover, in some countries, PCR testing has become a routine procedure of surveillance, testing all incoming air passengers in airports (ref), schools students (ref), or even the entire adult population (ref).  
+key component in the fight against the COVID-19 pandemic. RT-PCR testing can be performed on individuals suspected of infection and hence break potential transmission chains. Moreover, in some countries, RT-PCR testing has become a routine procedure of surveillance, testing incoming air passengers in airports \cite{PoolingAirports, TestingAirportsJapan}, schools students \cite{PoolSchool}, or even the entire adult population \cite{MassPooling}. 
+
 As such, the need for large-scale testing has
 resulted in the application of techniques to increase the throughput
 of RT-PCR tests \cite{DorfmanYuvalDor, PoolSize30, BayesianDorfman,
@@ -65,8 +66,7 @@ pooling has been demonstrated empirically \cite{DorfmanYuvalDor} and
 its error rates thoroughly investigated \cite{Kim, Simplistic1,
   OptimalDorfmanPool}. 
   
-The study and practice of pooling has advanced considerably since Dorfman's original paper, with 
-several other pooling techniques being applied for SARS-CoV-2.
+The study and practice of pooling has advanced considerably since Dorfman's original paper, with several other pooling techniques being applied for SARS-CoV-2.
 For example, in \emph{recursive} pooling \cite{Kim,RecursiveSevenFold}, if the
 first pooled test is positive, the pool is split into two and the splitting
 process repeats. Otherwise, all pool members are declared negative.
@@ -97,7 +97,7 @@ Dorfman pooling.
 Several consequences arise from our analysis: Previously estimated optimal Dorfman
 pool size \cite{OptimalDorfmanPool} should be revisited in the case of SARS-CoV-2, as it is influenced by the prevalence of infection. The error
 rates of other pooling schemes in use should also be reesetimated
-\cite{BayesianDorfman, Kim}. Another consequence of our results is that studies that seek precise error models should be conducted for other pathogens as well, since the standard error model could prove flawed for other pathogens. Specifically, all assumptions should be scrutinized, including (e.g.) the independence of tests, an  extremely widespread assumption in the group testing literature \cite{Kim, OptimalDorfmanPool} which dates back to Dorfman's original paper \cite{DorfmanOriginal}. Finally, new methods should be developed in order to take advantage of our (and other) more realistic models.
+\cite{BayesianDorfman, Kim}. Another consequence of our results is that studies that seek precise error models should be conducted for other pathogens as well, since the standard error model could prove flawed for other pathogens. Specifically, all assumptions should be scrutinized, including (e.g.) the independence of tests, an extremely widespread assumption in the group testing literature \cite{Kim, OptimalDorfmanPool} which dates back to Dorfman's original paper \cite{DorfmanOriginal}. Finally, new methods should be developed in order to take advantage of our (and other) more realistic models.
 
 \section*{Methods}
 Formally, we consider a pool containing $N$ individuals
@@ -312,7 +312,7 @@ Code for this manuscript is available at
 We plot $\err{exact}$ for varying prevalence $q$ and sensitivity $\Se$
 values, and make the comparison with $\err{common}$. As recommended by
 \cite{DorfmanYuvalDor}, we apply different pool sizes $N$, for
-different prevalence values. We observe that for a false-positive rate
+different prevalence values. We observe that for a specificity of
 $\Sp=0.95$ \cite{DorfmanYuvalDor} and a range of reasonable
 sensitivity and prevalence values \cite{KitComparison,
   InterpretingCOVID19Test, EstimatingRatesLourenco,
@@ -360,7 +360,7 @@ observed ranges \cite{KitComparison,EstimatingRatesKucrika,
   EstimatingRatesLourenco, InterpretingCOVID19Test} (Figure
 \ref{fig1}). Therefore, our results give rise to a conflict: low
 infection prevalence leads to high efficiency of Dorfman pooling
-\cite{DorfmanYuvalDor}, while also increasing false-negative rates.
+\cite{DorfmanYuvalDor},but also increases false-negative rates.
 
 As the COVID-19 pandemic progresses, the infection prevalence in
 various tested populations undergoes frequent changes. Hence, as our
