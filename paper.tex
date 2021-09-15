@@ -358,8 +358,10 @@ percentage increase in scheme false-negative rate is $\err{common} :=
 100\%\cdot \Se$.
 
 \subsection*{Code Availability}
-Code for this manuscript is available at
-\url{https://github.com/yairdaon/errorates}.
+Data and relevant code for this research work are stored in GitHub:
+\url{https://github.com/yairdaon/errorates} and have been archived
+within the Zenodo repository:
+\url{https://doi.org/10.5281/zenodo.5510563} \cite{MyCode}.
 
 \section*{Results}\label{section:results}
 \subsection*{Scheme false-negative}
@@ -478,6 +480,9 @@ Alhaji Cherif, Nadja Grobe, Xiaoling Wang, and Peter Kotanko, \emph{Simulation
   of pool testing to identify patients with coronavirus disease 2019 under
   conditions of limited test availability}, JAMA network open \textbf{3}
   (2020), no.~6, e2013075--e2013075.
+
+\bibitem{MyCode}
+Yair Daon, \emph{yairdaon/errorates: Release for archiving}, 2021.
 
 \bibitem{DOPE}
 Yair Daon, Amit Huppert, and Uri Obolsik, \emph{{DOPE}: {D}-{O}ptimal {P}ooling
@@ -640,53 +645,3 @@ Idan Yelin, Noga Aharony, Einat~Shaer Tamar, Amir Argoetti, Esther Messer, Dina
 % \bibliography{refs}
 
 \end{document}
-
-
-%% Todos
-%% add refs to dilution and paragraph in start
-PCR pooling , or simultaneously testing multiple samples, for the
-presence of SARS-CoV-2 is increasing in popularity. It is commonly
-assumed that including more than a single infected sample in a pooled
-test does not increase the probability of a positive outcome. We
-challenge this assumption with experimental data. We then analyze the
-probability of misidentifying an infected individual and show that it
-increases when the prevalence of infection decreases. However, low
-infection prevalence is exactly the condition when pooling is most
-efficient. We therefore implore the cautious use of pooling.
-
-
-
-
-Relative increase in Dorfman pooling false-negative rates
-$\err{exact}$. Left: Colors represent $\err{exact}$, the relative
-percentage increase in the scheme false-negative rates relative to the
-single test false-negative rates equation \eqref{eq:erel}. Right:
-colors represent the difference between $\err{common}$ and
-$\err{exact}$. The infection prevalence $q$, is varied on the x-axis,
-while the test sensitivity is varied on the y-axis. Pool size $N$, was
-chosen according to $q$ as in \cite{DorfmanYuvalDor}. The left panel
-shows that $\err{exact}$ is largest for low prevalence values $q$. The
-difference between $\err{common}$ and $\err{exact}$ can be as large as
-30\%, as seen in the right panel.
-
-
-Relative increase in Dorfman pooling false-negative rates
-$\err{exact}$. Left: Colors represent $\err{exact}$, the relative
-percentage increase in the scheme false-negative rates relative to the
-single test false-negative rates equation \eqref{eq:erel}. Right:
-colors represent the difference between $\err{common}$ and
-$\err{exact}$. The infection prevalence $q$, is varied on the x-axis,
-while the test sensitivity is varied on the y-axis. Pool size $N$, was
-chosen according to $q$ as in \cite{DorfmanYuvalDor}. The left panel
-shows that $\err{exact}$ is largest for low prevalence values $q$. The
-difference between $\err{common}$ and $\err{exact}$ can be as large as
-30\%, as seen in the right panel.
-
-Illustration of the revised probabilistic model. A pool contains
-individuals $\{1,2,3\}$ with state $\theta=(1,1,0)$ (i.e., individuals
-1 and 2 are infected). A negative pooled test ($\data=0$) occurs when
-three detection paths fail: A false-negative occurs for individuals
-$1$ and $2$, each with probability $(1-\sens)$.  Additionally, no
-false-positive detection occurs, with probability $\spec$. Individual
-$3$ is not infected and does not contribute to the probability of the
-pooled test result.
