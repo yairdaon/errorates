@@ -1,5 +1,40 @@
 \documentclass{article}
-\input{definitions}
+\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{todonotes}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{marginnote}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=red,linkcolor=red,bookmarks=true]{hyperref}
+\usepackage{soul}
+%% \usepackage{pgfplots}
+%% \pgfplotsset{compat=1.14}
+%% \usepackage{tikz}
+%% \usetikzlibrary{arrows.meta}
+%% \usetikzlibrary{shapes.geometric}
+%% \usetikzlibrary{bayesnet} 
+\usepackage{float}
+\usepackage{geometry}
+\hypersetup{linkcolor=red,citecolor=green,urlcolor=blue}  
+
+
+\newcommand{\fp}{P_{\text{fp}}}
+\newcommand{\fn}{P_{\text{fn}}}
+\newcommand{\Se}{S_\text{e}}
+\newcommand{\Sp}{S_\text{p}}
+\newcommand{\mi}{S_{\text{fn}}}
+\newcommand{\err}[1]{E_{\text{{#1}}}}%_{\text{rel}}}
+\newcommand{\eff}[1]{E_{\text{{#1}}}}%_{\text{rel}}}
+\renewcommand\Affilfont{\itshape\small}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\data}{\mathbf{d}}
+\newcommand{\sens}{S_{\text{e}}}
+\newcommand{\spec}{S_{\text{p}}}
+% \newcommand{\tn}{P_{\text{tn}}}
+
 
 \begin{document}
 \title{An Accurate Model for SARS-CoV-2 Pooled RT-PCR Test Errors}
@@ -418,7 +453,191 @@ Aviv University Center for Combating Pandemics and the Raymond and
 Beverly Sackler dean's post-doctoral fellowship.
 
 \bibliographystyle{amsplain}
-\bibliography{refs}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{OptimalDorfmanPool}
+Hrayer Aprahamian, Douglas~R Bish, and Ebru~K Bish, \emph{Optimal group
+  testing: Structural properties and robust solutions, with application to
+  public health screening}, INFORMS Journal on Computing (2020).
+
+\bibitem{DorfmanYuvalDor}
+Netta Barak, Roni Ben-Ami, Tal Sido, Amir Perri, Aviad Shtoyer, Mila Rivkin,
+  Tamar Licht, Ayelet Peretz, Judith Magenheim, Irit Fogel, et~al.,
+  \emph{Lessons from applied large-scale pooling of 133,816 {SARS-CoV}-2
+  {RT-PCR} tests}, Science Translational Medicine (2021).
+
+\bibitem{Simplistic2}
+Alhaji Cherif, Nadja Grobe, Xiaoling Wang, and Peter Kotanko, \emph{Simulation
+  of pool testing to identify patients with coronavirus disease 2019 under
+  conditions of limited test availability}, JAMA network open \textbf{3}
+  (2020), no.~6, e2013075--e2013075.
+
+\bibitem{DOPE}
+Yair Daon, Amit Huppert, and Uri Obolsik, \emph{{DOPE}: {D}-{O}ptimal {P}ooling
+  {E}xperimental design with application to {SARS-CoV}-2 screening}, {arXiv}
+  (2021).
+
+\bibitem{JTM}
+Yair Daon, Robin~N Thompson, and Uri Obolski, \emph{Estimating covid-19
+  outbreak risk through air travel}, Journal of Travel Medicine \textbf{27}
+  (2020), no.~5, taaa093.
+
+\bibitem{Salazar}
+Adolfo de~Salazar, Antonio Aguilera, Rocio Trastoy, Ana Fuentes, Juan~Carlos
+  Alados, Manuel Causse, Juan~Carlos Gal{\'a}n, Antonio Moreno, Matilde Trigo,
+  Mercedes P{\'e}rez-Ruiz, et~al., \emph{Sample pooling for {SARS-CoV-2 RT-PCR}
+  screening}, Clinical Microbiology and Infection \textbf{26} (2020), no.~12,
+  1687.e1--1687.e5.
+
+\bibitem{PoolingAirports}
+Philip Dollard, Isabel Griffin, Andre Berro, Nicole~J Cohen, Kimberly Singler,
+  Yoni Haber, Chris de~la Motte~Hurst, Amber Stolp, Sukhshant Atti, Leslie
+  Hausman, et~al., \emph{Risk assessment and management of covid-19 among
+  travelers arriving at designated us airports, january 17--september 13,
+  2020}, Morbidity and Mortality Weekly Report \textbf{69} (2020), no.~45,
+  1681.
+
+\bibitem{DorfmanOriginal}
+Robert Dorfman, \emph{The detection of defective members of large populations},
+  The Annals of Mathematical Statistics \textbf{14} (1943), no.~4, 436--440.
+
+\bibitem{RecursiveSevenFold}
+Jens~Niklas Eberhardt, Nikolas~Peter Breuckmann, and Christiane~Sigrid
+  Eberhardt, \emph{Multi-stage group testing improves efficiency of large-scale
+  {COVID}-19 screening}, Journal of Clinical Virology \textbf{128} (2020),
+  104382.
+
+\bibitem{CherifReview}
+Nadja Grobe, Alhaji Cherif, Xiaoling Wang, Zijun Dong, and Peter Kotanko,
+  \emph{Sample pooling: burden or solution?}, Clinical Microbiology and
+  Infection (2021).
+
+\bibitem{LionDorfman}
+Rudolf Hanel and Stefan Thurner, \emph{Boosting test-efficiency by pooled
+  testing for {SARS-CoV}-2---{F}ormula for optimal pool size}, PLoS One
+  \textbf{15} (2020), no.~11, e0240652.
+
+\bibitem{DilutionCOVID}
+Yosuke Hirotsu, Makoto Maejima, Masahiro Shibusawa, Yuki Nagakubo, Kazuhiro
+  Hosaka, Kenji Amemiya, Hitomi Sueki, Miyoko Hayakawa, Hitoshi Mochizuki,
+  Toshiharu Tsutsui, et~al., \emph{Pooling {RT-qPCR} testing for {SARS-CoV-2}
+  in 1000 individuals of healthy and infection-suspected patients}, Scientific
+  reports \textbf{10} (2020), no.~1, 1--8.
+
+\bibitem{MassPooling}
+Ed~Holt, \emph{Slovakia to test all adults for sars-cov-2}, The Lancet
+  \textbf{396} (2020), no.~10260, 1386--1387.
+
+\bibitem{GroupDilution}
+Frank~K Hwang, \emph{Group testing with a dilution effect}, Biometrika
+  \textbf{63} (1976), no.~3, 671--680.
+
+\bibitem{Kim}
+Hae-Young Kim, Michael~G Hudgens, Jonathan~M Dreyfuss, Daniel~J Westreich, and
+  Christopher~D Pilcher, \emph{Comparison of group testing algorithms for case
+  identification in the presence of test errors}, Biometrics \textbf{63}
+  (2007), no.~4, 1152--1163.
+
+\bibitem{EstimatingRatesKucrika}
+Lauren~M Kucirka, Stephen~A Lauer, Oliver Laeyendecker, Denali Boon, and Justin
+  Lessler, \emph{Variation in false-negative rate of reverse transcriptase
+  polymerase chain reaction---based {SARS-CoV}-2 tests by time since exposure},
+  Annals of Internal Medicine (2020).
+
+\bibitem{MatrixPooling}
+Thomas~J Kwiatkowski~Jr, Huda~Y Zoghbi, Susan~A Ledbetter, Kimberly~A Ellison,
+  and A~Craig Chinault, \emph{Rapid identification of yeast artificial
+  chromosome clones by matrix pooling and crude lysate {PCR}.}, Nucleic acids
+  research \textbf{18} (1990), no.~23, 7191.
+
+\bibitem{PoolSize30}
+Stefan Lohse, Thorsten Pfuhl, Barbara Berk{\'o}-G{\"o}ttel, J{\"u}rgen
+  Rissland, Tobias Gei{\ss}ler, Barbara G{\"a}rtner, S{\"o}ren~L Becker, Sophie
+  Schneitler, and Sigrun Smola, \emph{Pooling of samples for testing for
+  {SARS}-{C}o{V}-2 in asymptomatic people}, The Lancet Infectious Diseases
+  (2020).
+
+\bibitem{MinaScience}
+Michael~J Mina and Kristian~G Andersen, \emph{{COVID}-19 testing: {O}ne size
+  does not fit all}, Science \textbf{371} (2021), no.~6525, 126--127.
+
+\bibitem{BayesianDorfman}
+Rodrigo Noriega and Matthew Samore, \emph{Increasing testing throughput and
+  case detection with a pooled-sample {B}ayesian approach in the context of
+  {COVID}-19}, bioRxiv (2020).
+
+\bibitem{TestingAirportsJapan}
+Masataro Norizuki, Masahiko Hachiya, Ayano Motohashi, Ataru Moriya, Kazuhisa
+  Mezaki, Moto Kimura, Wataru Sugiura, Hidechika Akashi, and Tamami Umeda,
+  \emph{Effective screening strategies for detection of asymptomatic covid-19
+  travelers at airport quarantine stations: Exploratory findings in japan},
+  Global Health \& Medicine (2021), 2020--01109.
+
+\bibitem{Simplistic1}
+Alexander Pikovski and Kajetan Bentele, \emph{Pooling of coronavirus tests
+  under unknown prevalence}, Epidemiology \& Infection \textbf{148} (2020).
+
+\bibitem{CompressedPooling}
+Noam Shental, Shlomia Levy, Vered Wuvshet, Shosh Skorniakov, Bar Shalem, Aner
+  Ottolenghi, Yariv Greenshpan, Rachel Steinberg, Avishay Edri, Roni Gillis,
+  et~al., \emph{Efficient high-throughput {SARS-CoV}-2 testing to detect
+  asymptomatic carriers}, Science advances \textbf{6} (2020), no.~37, eabc5961.
+
+\bibitem{PoolSchool}
+Catherine~M Sweeney-Reed, Doreen Wolff, Jakob Niggel, Michael Kabesch, and
+  Christian Apfelbacher, \emph{Pool testing as a strategy for prevention of
+  sars-cov-2 outbreaks in schools: Protocol for a feasibility study}, JMIR
+  Research Protocols \textbf{10} (2021), no.~5, e28673.
+
+\bibitem{RobinHood}
+Robin~N Thompson, Francesca~A Lovell-Read, and Uri Obolski, \emph{Time from
+  symptom onset to hospitalisation of coronavirus disease 2019 ({COVID-19})
+  cases: implications for the proportion of transmissions from infectors with
+  few symptoms}, Journal of clinical medicine \textbf{9} (2020), no.~5, 1297.
+
+\bibitem{KitComparison}
+Puck~B van Kasteren, Bas van Der~Veer, Sharon van~den Brink, Lisa Wijsman,
+  J{\o}rgen de~Jonge, Annemarie van~den Brandt, Richard Molenkamp, Chantal~BEM
+  Reusken, and Adam Meijer, \emph{Comparison of seven commercial {RT-PCR}
+  diagnostic kits for {COVID}-19}, Journal of Clinical Virology \textbf{128}
+  (2020), 104412.
+
+\bibitem{InterpretingCOVID19Test}
+Jessica Watson, Penny~F Whiting, and John~E Brush, \emph{Interpreting a
+  {COVID}-19 test result}, {BMJ} \textbf{369} (2020).
+
+\bibitem{DilutionHIV}
+Lawrence~M Wein and Stefanos~A Zenios, \emph{Pooled testing for {HIV}
+  screening: capturing the dilution effect}, Operations Research \textbf{44}
+  (1996), no.~4, 543--569.
+
+\bibitem{EstimatingRatesLourenco}
+Paul~S Wikramaratna, Robert~S Paton, Mahan Ghafari, and Jos{\'e}
+  Louren{\c{c}}o, \emph{Estimating the false-negative test probability of
+  {SARS-CoV}-2 by {RT-PCR}}, Eurosurveillance \textbf{25} (2020), no.~50,
+  2000568.
+
+\bibitem{FalsePositiveEstimate}
+Steven Woloshin, Neeraj Patel, and Aaron~S Kesselheim, \emph{False negative
+  tests for {SARS}-{C}o{V}-2 infection-challenges and implications}, New
+  England Journal of Medicine (2020).
+
+\bibitem{Lion}
+Idan Yelin, Noga Aharony, Einat~Shaer Tamar, Amir Argoetti, Esther Messer, Dina
+  Berenbaum, Einat Shafran, Areen Kuzli, Nagham Gandali, Omer Shkedi, et~al.,
+  \emph{Evaluation of {COVID-19 RT-qPCR} test in multi sample pools}, Clinical
+  Infectious Diseases \textbf{71} (2020), no.~16, 2073--2078.
+
+\end{thebibliography}
+
+% \bibliography{refs}
 
 \end{document}
 
@@ -462,3 +681,12 @@ chosen according to $q$ as in \cite{DorfmanYuvalDor}. The left panel
 shows that $\err{exact}$ is largest for low prevalence values $q$. The
 difference between $\err{common}$ and $\err{exact}$ can be as large as
 30\%, as seen in the right panel.
+
+Illustration of the revised probabilistic model. A pool contains
+individuals $\{1,2,3\}$ with state $\theta=(1,1,0)$ (i.e., individuals
+1 and 2 are infected). A negative pooled test ($\data=0$) occurs when
+three detection paths fail: A false-negative occurs for individuals
+$1$ and $2$, each with probability $(1-\sens)$.  Additionally, no
+false-positive detection occurs, with probability $\spec$. Individual
+$3$ is not infected and does not contribute to the probability of the
+pooled test result.
